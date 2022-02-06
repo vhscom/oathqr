@@ -1,9 +1,15 @@
 <script lang="ts">
 	import { issuers, types, algorithms, digits } from './options';
+	import QrCode from './QrCode.svelte';
 
 	const [firstType] = types;
 	let type = firstType.value;
 	const handleTypeChange = ({ target }) => (type = target.value);
+
+	$: uriPlaceholderText = `otpauth://${type}/?secret=` + (type === 'hotp' ? '&counter=0' : '');
+
+	let qrCodeValue: string;
+	let qrCodeSize = 210;
 
 	let isAdvancedChecked = false;
 	const handleAdvancedCheckChange = ({ target }) => {
@@ -15,7 +21,7 @@
 	<fieldset class="flex flex-col space-y-4">
 		<legend class="sr-only">Choose basic settings</legend>
 
-		<select id="type" class="rounded">
+		<select id="type" class="rounded" on:change={handleTypeChange}>
 			{#each types as { name, value } (value)}
 				<option {value}>{name}</option>
 			{/each}
@@ -64,7 +70,7 @@
 	</fieldset>
 
 	<label class="text-sm">
-		<input class="mr-1 align-sub" type="checkbox" on:change={handleAdvancedCheckChange} />
+		<input class="mr-1 rounded align-sub" type="checkbox" on:change={handleAdvancedCheckChange} />
 		Advanced options
 	</label>
 
@@ -98,15 +104,27 @@
 		<hr />
 	{/if}
 
-	<input class="rounded" type="text" id="uri" placeholder="otpauth://" spellcheck="false" />
+	<input
+		class="rounded"
+		type="text"
+		id="uri"
+		bind:value={qrCodeValue}
+		placeholder={uriPlaceholderText}
+		spellcheck="false"
+	/>
 
 	<input
-		class="out-of-range:border-red-500"
+		class="w-full self-center out-of-range:border-red-500"
 		type="range"
 		id="size"
-		value="200"
-		min="50"
-		max="650"
+		bind:value={qrCodeSize}
+		min="84"
+		max="609"
+		step="21"
 		title="QR Code Size"
 	/>
 </form>
+
+<div class="flex self-center">
+	<QrCode size={qrCodeSize} value={qrCodeValue} />
+</div>
