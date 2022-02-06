@@ -1,2 +1,18 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script lang="ts">
+	import Form from '$lib/Form.svelte';
+</script>
+
+<header class="mt-4 flex flex-col items-center">
+	<h1 class="my-4">2FA QR code generator</h1>
+	<p class="-mt-2 text-sm font-semibold">
+		Save your 2FA secrets, then use this to scan them again.
+	</p>
+</header>
+<p>
+	This is a 2FA QR code generator made with SvelteKit that helps you make QR codes from 2FA secrets.
+	Based on the <a href="https://stefansundin.github.io/2fa-qr/">original version</a> by Stefan Sundin.
+	Enhanced for better privacy.
+</p>
+<section class="flex flex-col space-y-2">
+	<Form />
+</section>
