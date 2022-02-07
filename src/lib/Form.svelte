@@ -6,10 +6,34 @@
 	let type = firstType.value;
 	const handleTypeChange = ({ target }) => (type = target.value);
 
-	$: uriPlaceholderText = `otpauth://${type}/?secret=` + (type === 'hotp' ? '&counter=0' : '');
-
-	let qrCodeValue: string;
 	let qrCodeSize = 210;
+
+	let secretValue = '';
+	let labelValue = '';
+	let issuerValue = '';
+	let counterValue: number;
+
+	/**
+	 * Consult https://github.com/google/google-authenticator/wiki/Key-Uri-Format
+	 * for information on the format used.
+	 */
+	const encodeKeyUri = (type: string, label: string, issuer: string, secret: string, count = 0) => {
+		let uri = 'otpauth://';
+		const encodedLabel = encodeURI(label);
+		const encodedSecret = secret.replace(/\s/g, '');
+
+		uri = `${uri}${type}/${encodedLabel}?secret=${encodedSecret}`;
+		if (issuer) {
+			uri = `${uri}&issuer=${encodeURI(issuer)}`;
+		}
+		if (type === 'hotp') {
+			uri = `${uri}&counter=${!isNaN(count) ? count : 0}`;
+		}
+
+		return uri;
+	};
+
+	$: qrCodeValue = encodeKeyUri(type, labelValue, issuerValue, secretValue, counterValue);
 
 	let isAdvancedChecked = false;
 	const handleAdvancedCheckChange = ({ target }) => {
@@ -31,6 +55,7 @@
 			class="rounded"
 			type="search"
 			id="secret"
+			bind:value={secretValue}
 			placeholder="Secret &mdash; Required"
 			spellcheck="false"
 		/>
@@ -39,6 +64,7 @@
 			class="rounded"
 			type="search"
 			id="label"
+			bind:value={labelValue}
 			placeholder="Label &mdash; Required"
 			spellcheck="false"
 		/>
@@ -52,6 +78,7 @@
 			class="rounded"
 			type="search"
 			id="issuer"
+			bind:value={issuerValue}
 			placeholder="Issuer &mdash; Optional"
 			list="issuers"
 			spellcheck="false"
@@ -62,6 +89,7 @@
 				class="rounded"
 				type="search"
 				id="counter"
+				bind:value={counterValue}
 				placeholder="Initial counter &mdash; Defaults to 0"
 				pattern="\d+"
 				spellcheck="false"
@@ -109,7 +137,7 @@
 		type="text"
 		id="uri"
 		bind:value={qrCodeValue}
-		placeholder={uriPlaceholderText}
+		placeholder="otpauth://"
 		spellcheck="false"
 	/>
 

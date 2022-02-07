@@ -10,8 +10,7 @@
 </header>
 <p>
 	This is a 2FA QR code generator made with SvelteKit that helps you make QR codes from 2FA secrets.
-	Based on the <a href="https://stefansundin.github.io/2fa-qr/">original version</a> by Stefan Sundin.
-	Enhanced for better privacy.
+	Based on <a href="https://stefansundin.github.io/2fa-qr/">the original</a> by Stefan Sundin.
 </p>
 <section class="flex flex-col space-y-2">
 	<Form />
