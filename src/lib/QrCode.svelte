@@ -3,7 +3,7 @@
 	import QRious from 'qrious';
 
 	export let size: number;
-	export let errorCorrection = 'H';
+	export let errorCorrection = 'L';
 	export let background = '#fff';
 	export let backgroundAlpha = 0.986;
 	export let color = '#000';
