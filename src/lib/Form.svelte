@@ -1,6 +1,6 @@
 <script lang="ts">
+	import QR from 'svelte-qr';
 	import { issuers, types, algorithms, digits } from './options';
-	import QrCode from './QrCode.svelte';
 
 	const [firstType] = types;
 	let type = firstType.value;
@@ -153,6 +153,8 @@
 	/>
 </form>
 
-<div class="flex self-center">
-	<QrCode size={qrCodeSize} value={qrCodeValue} />
+<div class="flex self-center bg-orange-500 shadow" style="width:{qrCodeSize}px">
+	{#key `${qrCodeValue}-${qrCodeSize}`}
+		<QR text={qrCodeValue} />
+	{/key}
 </div>

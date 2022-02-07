@@ -12,6 +12,6 @@
 	This is a 2FA QR code generator made with SvelteKit that helps you make QR codes from 2FA secrets.
 	Based on <a href="https://stefansundin.github.io/2fa-qr/">the original</a> by Stefan Sundin.
 </p>
-<section class="flex flex-col space-y-2">
+<section class="mb-28 flex flex-col space-y-12">
 	<Form />
 </section>
