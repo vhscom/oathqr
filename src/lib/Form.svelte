@@ -1,44 +1,30 @@
 <script lang="ts">
-	import QR from 'svelte-qr';
+	import { afterUpdate } from 'svelte';
 	import { issuers, types, algorithms, digits } from './options';
+	import { encodeKeyUri } from './utils';
 
 	const [firstType] = types;
 	let type = firstType.value;
 	const handleTypeChange = ({ target }) => (type = target.value);
 
-	let qrCodeSize = 210;
+	export let size: number;
+	export let text: string;
 
-	let secretValue = '';
-	let labelValue = '';
-	let issuerValue = '';
-	let counterValue: number;
+	let secret = '';
+	let label = '';
+	let issuer = '';
+	let counter = 0;
 
-	/**
-	 * Consult https://github.com/google/google-authenticator/wiki/Key-Uri-Format
-	 * for information on the format used.
-	 */
-	const encodeKeyUri = (type: string, label: string, issuer: string, secret: string, count = 0) => {
-		let uri = 'otpauth://';
-		const encodedLabel = encodeURI(label);
-		const encodedSecret = secret.replace(/\s/g, '');
-
-		uri = `${uri}${type}/${encodedLabel}?secret=${encodedSecret}`;
-		if (issuer) {
-			uri = `${uri}&issuer=${encodeURI(issuer)}`;
-		}
-		if (type === 'hotp') {
-			uri = `${uri}&counter=${!isNaN(count) ? count : 0}`;
-		}
-
-		return uri;
-	};
-
-	$: qrCodeValue = encodeKeyUri(type, labelValue, issuerValue, secretValue, counterValue);
+	$: uri = encodeKeyUri(type, label, issuer, secret, counter);
 
 	let isAdvancedChecked = false;
 	const handleAdvancedCheckChange = ({ target }) => {
 		isAdvancedChecked = target.checked;
 	};
+
+	afterUpdate(() => {
+		text = encodeKeyUri(type, label, issuer, secret, counter);
+	});
 </script>
 
 <form class="flex flex-col space-y-4" autocomplete="off">
@@ -55,7 +41,7 @@
 			class="rounded"
 			type="search"
 			id="secret"
-			bind:value={secretValue}
+			bind:value={secret}
 			placeholder="Secret &mdash; Required"
 			spellcheck="false"
 		/>
@@ -64,7 +50,7 @@
 			class="rounded"
 			type="search"
 			id="label"
-			bind:value={labelValue}
+			bind:value={label}
 			placeholder="Label &mdash; Required"
 			spellcheck="false"
 		/>
@@ -74,11 +60,12 @@
 				<option value={issuer} />
 			{/each}
 		</datalist>
+
 		<input
 			class="rounded"
 			type="search"
 			id="issuer"
-			bind:value={issuerValue}
+			bind:value={issuer}
 			placeholder="Issuer &mdash; Optional"
 			list="issuers"
 			spellcheck="false"
@@ -89,7 +76,7 @@
 				class="rounded"
 				type="search"
 				id="counter"
-				bind:value={counterValue}
+				bind:value={counter}
 				placeholder="Initial counter &mdash; Defaults to 0"
 				pattern="\d+"
 				spellcheck="false"
@@ -136,7 +123,7 @@
 		class="rounded"
 		type="text"
 		id="uri"
-		bind:value={qrCodeValue}
+		bind:value={uri}
 		placeholder="otpauth://"
 		spellcheck="false"
 	/>
@@ -145,16 +132,10 @@
 		class="w-full self-center out-of-range:border-red-500"
 		type="range"
 		id="size"
-		bind:value={qrCodeSize}
+		bind:value={size}
 		min="84"
 		max="609"
 		step="21"
 		title="QR Code Size"
 	/>
 </form>
-
-<div class="flex self-center bg-orange-500 shadow" style="width:{qrCodeSize}px">
-	{#key `${qrCodeValue}-${qrCodeSize}`}
-		<QR text={qrCodeValue} />
-	{/key}
-</div>
