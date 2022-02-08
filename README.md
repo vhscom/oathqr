@@ -14,15 +14,18 @@ Stefan's original QR code generator contains several external requests meaning i
 
 ## Differences
 
-- Fixes XSS vulnerability due to unsafe [CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src) in original.
+Summary of differences from the original work:
+
+- Fixes XSS vulnerability due to unsafe CSP in original.
 - Makes no external requests for dependencies at runtime.
 - Adds strict same-origin CSP via HTTP request headers.
 - Generates sharper QR codes composed of pure vectors.
-- Dark mode automatically applied based on system preferences.
+- QR code containing secret cannot be saved to device.
+- Dark mode applied based on user preference.
 - Uses a native font stack and doesn't rely on Google.
 - Adjusts form validation logic to make it more friendly.
-- Missing ability to paste `otpauth://` URIs directly and watch the form update.
-- Missing ability to save QR code image to machine.
+- Missing ability to paste custom `otpauth` URIs directly.
+- Missing dynamic Authenticator app preview card.
 
 ## Developing
 
