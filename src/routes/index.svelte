@@ -23,7 +23,7 @@
 </section>
 
 <section class="my-10 flex flex-col space-y-12">
-	<div class="flex self-center shadow" style="width:{size}px">
+	<div class="flex self-center shadow-inner p-4 bg-gray-50" style="width:{size}px">
 		{#key `${text}-${size}`}
 			<QR {text} />
 		{/key}
