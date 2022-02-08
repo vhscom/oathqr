@@ -6,6 +6,17 @@
 	let text = 'otpauth://totp/?secret=';
 </script>
 
+<svelte:head>
+	<title>2FA QR code generator</title>
+	<meta name="description" content="Save your 2FA secrets, then use this to scan them again." />
+	<meta name="author" content="VHS" />
+	<link
+		rel="license"
+		href="https://www.gnu.org/licenses/gpl-3.0.html"
+		title="GNU GPL 3.0 or later"
+	/>
+</svelte:head>
+
 <header class="mt-4 flex flex-col items-center">
 	<h1 class="my-4">2FA QR code generator</h1>
 	<p class="-mt-2 text-sm font-semibold">
