@@ -10,6 +10,7 @@
 	<title>2FA QR code generator</title>
 	<meta name="description" content="Save your 2FA secrets, then use this to scan them again." />
 	<meta name="author" content="VHS" />
+	<meta name="robots" content="noindex,follow" />
 	<link
 		rel="license"
 		href="https://www.gnu.org/licenses/gpl-3.0.html"
