@@ -77,7 +77,7 @@
 
 		<div class="flex flex-col">
 			<input
-				class="rounded validated"
+				class="validated rounded"
 				type="text"
 				id="secret"
 				bind:value={$secret.value}
@@ -85,13 +85,13 @@
 				use:style={{ field: secret }}
 			/>
 			{#if !$secret.valid}
-				<div class="text-sm mt-1">A secret is required.</div>
+				<div class="mt-1 text-sm">A secret is required.</div>
 			{/if}
 		</div>
 
 		<div class="flex flex-col">
 			<input
-				class="rounded validated"
+				class="validated rounded"
 				type="text"
 				id="label"
 				bind:value={$label.value}
@@ -99,7 +99,7 @@
 				use:style={{ field: label }}
 			/>
 			{#if !$label.valid}
-				<div class="text-sm mt-1">A label is required.</div>
+				<div class="mt-1 text-sm">A label is required.</div>
 			{/if}
 		</div>
 

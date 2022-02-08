@@ -36,7 +36,7 @@
 </section>
 
 <section class="my-10 flex flex-col space-y-12">
-	<div class="flex self-center shadow-inner p-4 bg-gray-50" style="width:{size}px">
+	<div class="flex self-center bg-gray-50 p-4 shadow-inner" style="width:{size}px">
 		{#key `${text}-${size}`}
 			<QR {text} />
 		{/key}
@@ -50,13 +50,13 @@
 		> app it will look something like this:
 	</p>
 	<div class="border-y-8 border-gray-200">
-		<div class="px-4 flex items-center">
+		<div class="flex items-center px-4">
 			<div
-				class="h-12 w-12 bg-gray-600 text-white rounded-full text-2xl font-light flex justify-center items-center"
+				class="flex h-12 w-12 items-center justify-center rounded-full bg-gray-600 text-2xl font-light text-white"
 			>
 				H
 			</div>
-			<div class="p-4 flex flex-col">
+			<div class="flex flex-col p-4">
 				<div>
 					<span class="font-semibold">hub.docker.com</span>
 					<span class="text-gray-400">(vhsdev)</span>
@@ -67,7 +67,7 @@
 	</div>
 </section>
 
-<section class="flex flex-col mt-12">
+<section class="mt-12 flex flex-col">
 	<ul>
 		<li>
 			Made by <a target="_blank" rel="external noopener" href="https://vhs.codeberg.page">VHS</a>.

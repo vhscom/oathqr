@@ -5,6 +5,6 @@
 
 @layer utilities {
 	.validated.invalid {
-		@apply bg-red-50 border border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 focus:border-red-500 dark:bg-red-100 dark:border-red-400;
+		@apply border border-red-500 bg-red-50 text-red-900 placeholder-red-700 focus:border-red-500 focus:ring-red-500 dark:border-red-400 dark:bg-red-100;
 	}
 }
