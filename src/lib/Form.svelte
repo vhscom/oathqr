@@ -8,6 +8,9 @@
 	} from './options';
 	import { encodeKeyUri } from './utils';
 
+	import { field, style } from 'svelte-forms';
+	import { required } from 'svelte-forms/validators';
+
 	const [firstType] = typeOptions;
 	let type = firstType.value;
 	const handleTypeChange = ({ target }) => (type = target.value);
@@ -15,8 +18,8 @@
 	export let size: number;
 	export let text: string;
 
-	let secret = '';
-	let label = '';
+	const secret = field('secret', '', [required()]);
+	const label = field('label', '', [required()]);
 	let issuer = '';
 	let counter = null;
 	let algorithm = 'SHA1';
@@ -37,19 +40,27 @@
 			if (type !== 'hotp') {
 				text = encodeKeyUri(
 					type,
-					label,
+					$label.value,
 					issuer,
-					secret,
+					$secret.value,
 					counterWithDefault,
 					algorithm,
 					digits,
 					periodWithDefault
 				);
 			} else {
-				text = encodeKeyUri(type, label, issuer, secret, counterWithDefault, algorithm, digits);
+				text = encodeKeyUri(
+					type,
+					$label.value,
+					issuer,
+					$secret.value,
+					counterWithDefault,
+					algorithm,
+					digits
+				);
 			}
 		} else {
-			text = encodeKeyUri(type, label, issuer, secret, counterWithDefault);
+			text = encodeKeyUri(type, $label.value, issuer, $secret.value, counterWithDefault);
 		}
 	});
 </script>
@@ -64,23 +75,35 @@
 			{/each}
 		</select>
 
-		<input
-			class="rounded"
-			type="search"
-			id="secret"
-			bind:value={secret}
-			placeholder="Secret &mdash; Required"
-			spellcheck="false"
-		/>
+		<div class="flex flex-col">
+			<input
+				class="rounded validated"
+				type="search"
+				id="secret"
+				bind:value={$secret.value}
+				placeholder="Secret &mdash; Required"
+				spellcheck="false"
+				use:style={{ field: secret }}
+			/>
+			{#if !$secret.valid}
+				<div class="text-sm mt-1">A secret is required.</div>
+			{/if}
+		</div>
 
-		<input
-			class="rounded"
-			type="search"
-			id="label"
-			bind:value={label}
-			placeholder="Label &mdash; Required"
-			spellcheck="false"
-		/>
+		<div class="flex flex-col">
+			<input
+				class="rounded validated"
+				type="search"
+				id="label"
+				bind:value={$label.value}
+				placeholder="Label &mdash; Required"
+				spellcheck="false"
+				use:style={{ field: label }}
+			/>
+			{#if !$label.valid}
+				<div class="text-sm mt-1">A label is required.</div>
+			{/if}
+		</div>
 
 		<datalist id="issuers">
 			{#each issuerOptions as issuer (issuer)}
@@ -150,6 +173,7 @@
 	{/if}
 
 	<input
+		readonly
 		class="rounded"
 		type="text"
 		id="uri"
