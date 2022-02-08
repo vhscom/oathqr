@@ -3,7 +3,7 @@
 	import Form from '$lib/Form.svelte';
 
 	let size = 200;
-	let text = '';
+	let text = 'otpauth://totp/?secret=';
 </script>
 
 <header class="mt-4 flex flex-col items-center">
@@ -23,7 +23,7 @@
 </section>
 
 <section class="my-10 flex flex-col space-y-12">
-	<div class="flex self-center bg-orange-500 shadow" style="width:{size}px">
+	<div class="flex self-center shadow" style="width:{size}px">
 		{#key `${text}-${size}`}
 			<QR {text} />
 		{/key}
