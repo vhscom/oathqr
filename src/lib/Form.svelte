@@ -69,7 +69,11 @@
 	<fieldset class="flex flex-col space-y-4">
 		<legend class="sr-only">Choose basic settings</legend>
 
-		<select id="type" class="rounded" on:change={handleTypeChange}>
+		<select
+			id="type"
+			class="rounded dark:bg-gray-900 placeholder:text-white"
+			on:change={handleTypeChange}
+		>
 			{#each typeOptions as { name, value } (value)}
 				<option {value}>{name}</option>
 			{/each}
@@ -77,7 +81,7 @@
 
 		<div class="flex flex-col">
 			<input
-				class="validated rounded"
+				class="validated rounded dark:bg-gray-900 placeholder:text-white"
 				type="text"
 				id="secret"
 				bind:value={$secret.value}
@@ -91,7 +95,7 @@
 
 		<div class="flex flex-col">
 			<input
-				class="validated rounded"
+				class="validated rounded dark:bg-gray-900 placeholder:text-white"
 				type="text"
 				id="label"
 				bind:value={$label.value}
@@ -110,7 +114,7 @@
 		</datalist>
 
 		<input
-			class="rounded"
+			class="rounded dark:bg-gray-900 placeholder:text-white"
 			type="text"
 			id="issuer"
 			bind:value={issuer}
@@ -120,7 +124,7 @@
 
 		{#if type === 'hotp'}
 			<input
-				class="rounded"
+				class="rounded dark:bg-gray-900 placeholder:text-white"
 				type="number"
 				id="counter"
 				bind:value={counter}
@@ -142,19 +146,27 @@
 		</p>
 		<fieldset class="flex flex-col space-y-2">
 			<legend class="sr-only">Choose advanced settings</legend>
-			<select class="rounded" id="algorithm" bind:value={algorithm}>
+			<select
+				class="rounded dark:bg-gray-900 placeholder:text-white"
+				id="algorithm"
+				bind:value={algorithm}
+			>
 				{#each algorithmOptions as { name, value } (value)}
 					<option {value}>{name}</option>
 				{/each}
 			</select>
-			<select class="rounded" id="digits" bind:value={digits}>
+			<select
+				class="rounded dark:bg-gray-900 placeholder:text-white"
+				id="digits"
+				bind:value={digits}
+			>
 				{#each digitsOptions as { name, value } (value)}
 					<option {value}>{name}</option>
 				{/each}
 			</select>
 			{#if type !== 'hotp'}
 				<input
-					class="rounded"
+					class="rounded dark:bg-gray-900 placeholder:text-white"
 					type="number"
 					id="period"
 					bind:value={period}
@@ -165,10 +177,17 @@
 		<hr />
 	{/if}
 
-	<input readonly class="rounded" type="text" id="uri" bind:value={uri} placeholder="otpauth://" />
+	<input
+		readonly
+		class="rounded dark:bg-gray-900 placeholder:text-white"
+		type="text"
+		id="uri"
+		bind:value={uri}
+		placeholder="otpauth://"
+	/>
 
 	<input
-		class="w-full self-center out-of-range:border-red-500"
+		class="w-full self-center out-of-range:border-red-500 dark:bg-gray-900 placeholder:text-white"
 		type="range"
 		id="size"
 		bind:value={size}
