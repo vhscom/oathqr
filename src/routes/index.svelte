@@ -32,6 +32,13 @@
 	> by Stefan Sundin.
 </p>
 
+<p>
+	<b>Usage instructions:</b> Build from source (link below), and generate and scan your QR code
+	after you've reviewed the source code of this application. Application uses strict same-origin
+	<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">Content-Security Policy</a> to ensure
+	your browser does not communicate outside the localhost when run offline. Don't trust. Verify.
+</p>
+
 <section class="flex flex-col space-y-12">
 	<Form bind:text bind:size />
 </section>
