@@ -7,9 +7,9 @@
 </script>
 
 <svelte:head>
-	<title>2FA QR code generator</title>
-	<meta name="description" content="Save your 2FA secrets, then use this to scan them again." />
+	<title>2FA QR Code Generator</title>
 	<meta name="author" content="VHS" />
+	<meta name="description" content="JavaScript 2FA QR code generator." />
 	<meta name="robots" content="noindex,follow" />
 	<link
 		rel="license"
@@ -19,7 +19,7 @@
 </svelte:head>
 
 <header class="mt-4 flex flex-col items-center">
-	<h1 class="my-4">2FA QR code generator</h1>
+	<h1 class="my-4">2FA QR Code Generator</h1>
 	<p class="-mt-2 text-sm font-semibold">
 		Save your 2FA secrets, then use this to scan them again.
 	</p>

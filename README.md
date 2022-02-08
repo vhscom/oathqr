@@ -1,4 +1,4 @@
-# 2fa-qr-svelte
+# 2FA QR Code Generator
 
 > Save your 2FA secrets, then use this to scan them again.
 
