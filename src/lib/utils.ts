@@ -7,7 +7,10 @@ export const encodeKeyUri = (
 	label: string,
 	issuer: string,
 	secret: string,
-	count: number
+	count: number,
+	algorithm?: string,
+	digits?: number,
+	period?: number
 ) => {
 	let uri = 'otpauth://';
 	const encodedLabel = encodeURI(label);
@@ -19,6 +22,15 @@ export const encodeKeyUri = (
 	}
 	if (type === 'hotp') {
 		uri = `${uri}&counter=${!isNaN(count) ? count : 0}`;
+	}
+	if (algorithm) {
+		uri = `${uri}&algorithm=${algorithm}`;
+	}
+	if (digits) {
+		uri = `${uri}&digits=${digits}`;
+	}
+	if (period) {
+		uri = `${uri}&period=${period}`;
 	}
 
 	return uri;

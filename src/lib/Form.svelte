@@ -1,9 +1,14 @@
 <script lang="ts">
 	import { afterUpdate } from 'svelte';
-	import { issuers, types, algorithms, digits } from './options';
+	import {
+		issuers as issuerOptions,
+		types as typeOptions,
+		algorithms as algorithmOptions,
+		digits as digitsOptions
+	} from './options';
 	import { encodeKeyUri } from './utils';
 
-	const [firstType] = types;
+	const [firstType] = typeOptions;
 	let type = firstType.value;
 	const handleTypeChange = ({ target }) => (type = target.value);
 
@@ -13,9 +18,12 @@
 	let secret = '';
 	let label = '';
 	let issuer = '';
-	let counter = 0;
+	let counter = null;
+	let algorithm = 'SHA1';
+	let digits = 6;
+	let period = null;
 
-	$: uri = encodeKeyUri(type, label, issuer, secret, counter);
+	$: uri = text;
 
 	let isAdvancedChecked = false;
 	const handleAdvancedCheckChange = ({ target }) => {
@@ -23,7 +31,26 @@
 	};
 
 	afterUpdate(() => {
-		text = encodeKeyUri(type, label, issuer, secret, counter);
+		const periodWithDefault = period ?? 30;
+		const counterWithDefault = counter ?? 0;
+		if (isAdvancedChecked) {
+			if (type !== 'hotp') {
+				text = encodeKeyUri(
+					type,
+					label,
+					issuer,
+					secret,
+					counterWithDefault,
+					algorithm,
+					digits,
+					periodWithDefault
+				);
+			} else {
+				text = encodeKeyUri(type, label, issuer, secret, counterWithDefault, algorithm, digits);
+			}
+		} else {
+			text = encodeKeyUri(type, label, issuer, secret, counterWithDefault);
+		}
 	});
 </script>
 
@@ -32,7 +59,7 @@
 		<legend class="sr-only">Choose basic settings</legend>
 
 		<select id="type" class="rounded" on:change={handleTypeChange}>
-			{#each types as { name, value } (value)}
+			{#each typeOptions as { name, value } (value)}
 				<option {value}>{name}</option>
 			{/each}
 		</select>
@@ -56,7 +83,7 @@
 		/>
 
 		<datalist id="issuers">
-			{#each issuers as issuer (issuer)}
+			{#each issuerOptions as issuer (issuer)}
 				<option value={issuer} />
 			{/each}
 		</datalist>
@@ -95,26 +122,29 @@
 			Please note that the advanced options are not supported by the Google Authenticator app (all
 			advanced options are ignored). Yubico Authenticator supports these advanced options.
 		</p>
-		<fieldset class="flex flex-col space-y-2" id="advanced_options_container">
+		<fieldset class="flex flex-col space-y-2">
 			<legend class="sr-only">Choose advanced settings</legend>
-			<select class="rounded" id="algorithm">
-				{#each algorithms as { name, value } (value)}
+			<select class="rounded" id="algorithm" bind:value={algorithm}>
+				{#each algorithmOptions as { name, value } (value)}
 					<option {value}>{name}</option>
 				{/each}
 			</select>
-			<select class="rounded" id="digits">
-				{#each digits as { name, value } (value)}
+			<select class="rounded" id="digits" bind:value={digits}>
+				{#each digitsOptions as { name, value } (value)}
 					<option {value}>{name}</option>
 				{/each}
 			</select>
-			<input
-				class="rounded"
-				type="search"
-				id="period"
-				placeholder="Valid period, in seconds &mdash; Defaults to 30"
-				pattern="\d+"
-				spellcheck="false"
-			/>
+			{#if type !== 'hotp'}
+				<input
+					class="rounded"
+					type="number"
+					id="period"
+					bind:value={period}
+					placeholder="Valid period, in seconds &mdash; Defaults to 30"
+					pattern="\d+"
+					spellcheck="false"
+				/>
+			{/if}
 		</fieldset>
 		<hr />
 	{/if}
