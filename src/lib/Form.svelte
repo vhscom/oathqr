@@ -65,7 +65,7 @@
 	});
 </script>
 
-<form class="flex flex-col space-y-4" autocomplete="off">
+<form class="flex flex-col space-y-4" autocomplete="off" spellcheck="false">
 	<fieldset class="flex flex-col space-y-4">
 		<legend class="sr-only">Choose basic settings</legend>
 
@@ -78,11 +78,10 @@
 		<div class="flex flex-col">
 			<input
 				class="rounded validated"
-				type="search"
+				type="text"
 				id="secret"
 				bind:value={$secret.value}
 				placeholder="Secret &mdash; Required"
-				spellcheck="false"
 				use:style={{ field: secret }}
 			/>
 			{#if !$secret.valid}
@@ -93,11 +92,10 @@
 		<div class="flex flex-col">
 			<input
 				class="rounded validated"
-				type="search"
+				type="text"
 				id="label"
 				bind:value={$label.value}
 				placeholder="Label &mdash; Required"
-				spellcheck="false"
 				use:style={{ field: label }}
 			/>
 			{#if !$label.valid}
@@ -113,23 +111,20 @@
 
 		<input
 			class="rounded"
-			type="search"
+			type="text"
 			id="issuer"
 			bind:value={issuer}
 			placeholder="Issuer &mdash; Optional"
 			list="issuers"
-			spellcheck="false"
 		/>
 
 		{#if type === 'hotp'}
 			<input
 				class="rounded"
-				type="search"
+				type="number"
 				id="counter"
 				bind:value={counter}
 				placeholder="Initial counter &mdash; Defaults to 0"
-				pattern="\d+"
-				spellcheck="false"
 			/>
 		{/if}
 	</fieldset>
@@ -164,23 +159,13 @@
 					id="period"
 					bind:value={period}
 					placeholder="Valid period, in seconds &mdash; Defaults to 30"
-					pattern="\d+"
-					spellcheck="false"
 				/>
 			{/if}
 		</fieldset>
 		<hr />
 	{/if}
 
-	<input
-		readonly
-		class="rounded"
-		type="text"
-		id="uri"
-		bind:value={uri}
-		placeholder="otpauth://"
-		spellcheck="false"
-	/>
+	<input readonly class="rounded" type="text" id="uri" bind:value={uri} placeholder="otpauth://" />
 
 	<input
 		class="w-full self-center out-of-range:border-red-500"
