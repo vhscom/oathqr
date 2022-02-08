@@ -1,30 +1,22 @@
-# create-svelte
+# 2fa-qr-svelte
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+> Save your 2FA secrets, then use this to scan them again.
 
-## Creating a project
+This is a 2FA QR code generator made with SvelteKit that helps you make QR codes from 2FA secrets. Based on [the original](https://stefansundin.github.io/2fa-qr/) by Stefan Sundin.
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Motivation
 
-```bash
-# create a new project in the current directory
-npm init svelte@next
-
-# create a new project in my-app
-npm init svelte@next my-app
-```
-
-> Note: the `@next` is temporary
+Stefan's original QR code generator contains several external requests meaning it cannot run offline. In addition, the original version relies on web fonts provided by Google which decreases privacy and makes the application less accessible to users in Mainland China. I have addressed those problems in this version, which can run fully offline once built and does not rely on Google for web font display.
 
 ## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Once you've cloned the project and installed dependencies with `pnpm install`, start a development server:
 
 ```bash
-npm run dev
+pnpm dev
 
 # or start the server and open the app in a new browser tab
-npm run dev -- --open
+pnpm dev -- --open
 ```
 
 ## Building
@@ -32,9 +24,9 @@ npm run dev -- --open
 To create a production version of your app:
 
 ```bash
-npm run build
+pnpm build
 ```
 
-You can preview the production build with `npm run preview`.
+You can preview the production build with `pnpm preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs#adapters) for your target environment.
