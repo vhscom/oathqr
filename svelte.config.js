@@ -12,7 +12,13 @@ const config = {
 	],
 
 	kit: {
-		adapter: adapter()
+		adapter: adapter(),
+		csp: {
+			mode: 'auto',
+			directives: {
+				'default-src': ['self']
+			}
+		}
 	}
 };
 
