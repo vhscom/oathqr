@@ -1,8 +1,8 @@
-# 2FA QR Code Generator
+# Offline 2FA QR Code Generator
 
 > Save your 2FA secrets, then use this to scan them again.
 
-This is a 2FA QR code generator made with SvelteKit that helps you make QR codes from 2FA secrets. Based on [the original](https://stefansundin.github.io/2fa-qr/) by Stefan Sundin.
+This is a offline 2FA QR code generator made with SvelteKit that helps you make QR codes from 2FA secrets. Based on [the original](https://stefansundin.github.io/2fa-qr/) by Stefan Sundin.
 
 ## Demo
 
@@ -16,9 +16,8 @@ Stefan's original QR code generator contains several external requests meaning i
 
 Summary of differences from the original work:
 
-- Fixes XSS vulnerability due to unsafe CSP in original.
-- Makes no external requests for dependencies at runtime.
 - Adds strict same-origin CSP via HTTP request headers.
+- Makes no external requests for dependencies.
 - Generates sharper QR codes composed of pure vectors.
 - QR code containing secret cannot be saved to device.
 - Dark mode applied based on user preference.
