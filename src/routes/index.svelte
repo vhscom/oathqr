@@ -44,7 +44,10 @@
 </section>
 
 <section class="my-10 flex flex-col space-y-12">
-	<div class="flex self-center bg-gray-50 dark:bg-gray-200 p-4 shadow-inner" style="width:{size}px">
+	<div
+		class="block self-center bg-gray-50 p-4 shadow-inner dark:bg-gray-200"
+		style="width:{size}px"
+	>
 		{#key `${text}-${size}`}
 			<QR {text} />
 		{/key}
