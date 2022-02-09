@@ -20,7 +20,7 @@
 
 	const secret = field('secret', '', [required()]);
 	const label = field('label', '', [required()]);
-	let issuer = '';
+	let issuer = null;
 	let counter = null;
 	let algorithm = 'SHA1';
 	let digits = 6;

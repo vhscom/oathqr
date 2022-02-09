@@ -1,6 +1,8 @@
-<script lang="ts">
+<script>
 	import QR from 'svelte-qr';
 	import Form from '$lib/Form.svelte';
+	import Example from '$lib/Example.svelte';
+	import About from '$lib/About.svelte';
 
 	let size = 200;
 	let text = 'otpauth://totp/?secret=';
@@ -9,7 +11,7 @@
 <svelte:head>
 	<title>2FA QR Code Generator</title>
 	<meta name="author" content="VHS" />
-	<meta name="description" content="JavaScript 2FA QR code generator." />
+	<meta name="description" content="Offline 2FA QR code generator." />
 	<meta name="robots" content="noindex,follow" />
 	<link
 		rel="license"
@@ -55,57 +57,9 @@
 </section>
 
 <section class="flex flex-col">
-	<p>
-		In the <a target="_blank" rel="external noopener" href="https://getaegis.app/"
-			>Aegis Authenticator</a
-		> app it will look something like this:
-	</p>
-	<div class="border-y-8 border-gray-200">
-		<div class="flex items-center px-4">
-			<div
-				class="flex h-12 w-12 items-center justify-center rounded-full bg-gray-600 text-2xl font-light text-white"
-			>
-				H
-			</div>
-			<div class="flex flex-col p-4">
-				<div>
-					<span class="font-semibold">hub.docker.com</span>
-					<span class="text-gray-400">(vhsdev)</span>
-				</div>
-				<span class="text-3xl text-blue-600">958 686</span>
-			</div>
-		</div>
-	</div>
+	<Example />
 </section>
 
-<section class="mt-12 flex flex-col">
-	<ul>
-		<li>
-			Made by <a target="_blank" rel="external noopener" href="https://vhs.codeberg.page">VHS</a>.
-		</li>
-		<li>
-			Get <a target="_blank" rel="external noopener" href="https://codeberg.org/vhs/2fa-qr-svelte">
-				the source code.
-			</a>
-		</li>
-		<li>
-			Uses <a target="_blank" rel="external noopener" href="https://github.com/jnordberg/svelte-qr"
-				>svelte-qr</a
-			>
-			,
-			<a target="_blank" rel="external noopener" href="https://github.com/chainlist/svelte-forms"
-				>svelte-forms</a
-			>,
-			<a target="_blank" rel="external noopener" href="https://tailwindcss.com/">Tailwind CSS</a>
-			and
-			<a target="_blank" rel="external noopener" href="https://kit.svelte.dev/">SvelteKit</a>.
-		</li>
-		<li>
-			See <a
-				target="_blank"
-				rel="external noopener nofollow"
-				href="https://github.com/google/google-authenticator/wiki/Key-Uri-Format">the docs</a
-			> for the URI format.
-		</li>
-	</ul>
-</section>
+<footer class="mt-12 flex flex-col">
+	<About />
+</footer>
