@@ -71,7 +71,7 @@
 
 		<select
 			id="type"
-			class="rounded dark:bg-gray-900 placeholder:text-white"
+			class="rounded dark:bg-gray-900 dark:placeholder:text-white"
 			on:change={handleTypeChange}
 		>
 			{#each typeOptions as { name, value } (value)}
@@ -81,7 +81,7 @@
 
 		<div class="flex flex-col">
 			<input
-				class="validated rounded dark:bg-gray-900 placeholder:text-white"
+				class="validated rounded dark:bg-gray-900 dark:placeholder:text-white"
 				type="text"
 				id="secret"
 				bind:value={$secret.value}
@@ -95,7 +95,7 @@
 
 		<div class="flex flex-col">
 			<input
-				class="validated rounded dark:bg-gray-900 placeholder:text-white"
+				class="validated rounded dark:bg-gray-900 dark:placeholder:text-white"
 				type="text"
 				id="label"
 				bind:value={$label.value}
@@ -114,7 +114,7 @@
 		</datalist>
 
 		<input
-			class="rounded dark:bg-gray-900 placeholder:text-white"
+			class="rounded dark:bg-gray-900 dark:placeholder:text-white"
 			type="text"
 			id="issuer"
 			bind:value={issuer}
@@ -124,7 +124,7 @@
 
 		{#if type === 'hotp'}
 			<input
-				class="rounded dark:bg-gray-900 placeholder:text-white"
+				class="rounded dark:bg-gray-900 dark:placeholder:text-white"
 				type="number"
 				id="counter"
 				bind:value={counter}
@@ -147,7 +147,7 @@
 		<fieldset class="flex flex-col space-y-2">
 			<legend class="sr-only">Choose advanced settings</legend>
 			<select
-				class="rounded dark:bg-gray-900 placeholder:text-white"
+				class="rounded dark:bg-gray-900 dark:placeholder:text-white"
 				id="algorithm"
 				bind:value={algorithm}
 			>
@@ -156,7 +156,7 @@
 				{/each}
 			</select>
 			<select
-				class="rounded dark:bg-gray-900 placeholder:text-white"
+				class="rounded dark:bg-gray-900 dark:placeholder:text-white"
 				id="digits"
 				bind:value={digits}
 			>
@@ -166,7 +166,7 @@
 			</select>
 			{#if type !== 'hotp'}
 				<input
-					class="rounded dark:bg-gray-900 placeholder:text-white"
+					class="rounded dark:bg-gray-900 dark:placeholder:text-white"
 					type="number"
 					id="period"
 					bind:value={period}
@@ -179,7 +179,7 @@
 
 	<input
 		readonly
-		class="rounded dark:bg-gray-900 placeholder:text-white"
+		class="rounded dark:bg-gray-900 dark:placeholder:text-white"
 		type="text"
 		id="uri"
 		bind:value={uri}
@@ -187,7 +187,7 @@
 	/>
 
 	<input
-		class="w-full self-center out-of-range:border-red-500 dark:bg-gray-900 placeholder:text-white"
+		class="w-full self-center out-of-range:border-red-500 dark:bg-gray-900 dark:placeholder:text-white"
 		type="range"
 		id="size"
 		bind:value={size}
