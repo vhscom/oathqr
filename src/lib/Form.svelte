@@ -135,8 +135,7 @@
 
 	<label class="text-sm">
 		<input
-			style={isAdvancedChecked && 'background-image:url(check.svg)'}
-			class="mr-1 rounded align-sub text-sm"
+			class="mr-1 rounded text-sm align-sub"
 			type="checkbox"
 			on:change={handleAdvancedCheckChange}
 		/>
