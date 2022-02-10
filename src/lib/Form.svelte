@@ -136,7 +136,7 @@
 	<label class="text-sm">
 		<input
 			style={isAdvancedChecked && 'background-image:url(check.svg)'}
-			class="mr-1 rounded text-sm align-sub"
+			class="mr-1 rounded align-sub text-sm"
 			type="checkbox"
 			on:change={handleAdvancedCheckChange}
 		/>
@@ -146,8 +146,8 @@
 	{#if isAdvancedChecked}
 		<hr />
 		<p class="text-sm">
-			Please note that the advanced options are not supported by the Google Authenticator app (all
-			advanced options are ignored). Yubico Authenticator supports these advanced options.
+			Advanced options are ignored by Google Authenticator but may be supported by other
+			authenticator apps. Yubico, for example, is known to support these options.
 		</p>
 		<fieldset class="flex flex-col space-y-2">
 			<legend class="sr-only">Choose advanced settings</legend>

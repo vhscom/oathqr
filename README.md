@@ -2,7 +2,7 @@
 
 > Save your 2FA secrets, then use this to scan them again.
 
-This is a offline 2FA QR code generator made with SvelteKit that helps you make QR codes from 2FA secrets. Based on [the original](https://stefansundin.github.io/2fa-qr/) by Stefan Sundin.
+This is an offline 2FA QR code generator made with SvelteKit that helps you make QR codes from 2FA secrets. Inspired by [the jQuery version](https://stefansundin.github.io/2fa-qr/) by Stefan Sundin.
 
 ## Demo
 
@@ -10,11 +10,11 @@ View the [app running online](https://2fa-qr-svelte.vercel.app).
 
 ## Motivation
 
-Stefan's original QR code generator contains several external requests meaning it cannot run offline. In addition, the original version relies on web fonts provided by Google which makes the application less accessible to users in Mainland China. I have addressed those problems in this version, which supports running offline and does not rely on Google for font display.
+Stefan's QR code generator contains several external requests meaning it cannot run offline. In addition, the jQuery version relies on web fonts provided by Google which makes the application less accessible to users in Mainland China and pings Google every time you load the page. I have addressed those concerns in this version, which runs offline and does not make any external requests.
 
 ## Differences
 
-Summary of differences from the original work:
+Summary of differences from the jQuery version:
 
 - Adds strict same-origin CSP via HTTP request headers.
 - Makes no external requests for dependencies.
@@ -28,7 +28,7 @@ Summary of differences from the original work:
 
 ## Developing
 
-Once you've cloned the project and installed dependencies with `pnpm install`, start a development server:
+Once you've cloned the project and installed development dependencies with `pnpm install`, start a development server:
 
 ```bash
 pnpm dev
@@ -53,4 +53,4 @@ You can preview the production build with `pnpm preview`.
 
 Copyright (C) 2022 VHS
 
-As with the original with which this work is based this app is released under the terms of the GPL-3.0-or-later license. See the file COPYING in the source code for full license text.
+This work is released under the terms of the GPL-3.0-or-later license. See the file COPYING in the source code for full license text.

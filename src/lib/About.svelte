@@ -1,24 +1,19 @@
-<ul>
-	<li>
-		Made by <a rel="external noopener" href="https://vhs.codeberg.page">VHS</a>.
-	</li>
-	<li>
-		Get <a rel="external noopener" href="https://codeberg.org/vhs/2fa-qr-svelte">
-			the source code.
-		</a>
-	</li>
-	<li>
-		Uses <a rel="external noopener" href="https://github.com/jnordberg/svelte-qr">svelte-qr</a>
-		,
-		<a rel="external noopener" href="https://github.com/chainlist/svelte-forms">svelte-forms</a>,
-		<a rel="external noopener" href="https://tailwindcss.com/">Tailwind CSS</a>
-		and
-		<a rel="external noopener" href="https://kit.svelte.dev/">SvelteKit</a>.
-	</li>
-	<li>
-		See <a
-			rel="external noopener nofollow"
-			href="https://github.com/google/google-authenticator/wiki/Key-Uri-Format">the docs</a
-		> for the URI format.
-	</li>
-</ul>
+<p>
+	This is an 2FA QR code generator made with SvelteKit that helps you make QR codes from 2FA
+	secrets. Insipired by the <a
+		rel="external noopener"
+		tabindex="-1"
+		href="https://stefansundin.github.io/2fa-qr/">the jQuery version</a
+	>
+	by Stefan Sundin.
+</p>
+
+<p class="text-sm">
+	<b>Usage instructions:</b> Build from source (link below), and generate and scan your QR code
+	after you've reviewed the source code of this application. Application uses strict
+	<a
+		rel="external noopener"
+		tabindex="-1"
+		href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">Content-Security Policy</a
+	> to ensure conforming browsers cannot communicate outside the localhost when run offline.
+</p>

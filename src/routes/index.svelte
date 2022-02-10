@@ -1,46 +1,22 @@
 <script>
-	import QR from 'svelte-qr';
-	import Form from '$lib/Form.svelte';
-	import Example from '$lib/Example.svelte';
 	import About from '$lib/About.svelte';
+	import Form from '$lib/Form.svelte';
+	import QR from 'svelte-qr';
+	import Example from '$lib/Example.svelte';
+	import Footer from '$lib/Footer.svelte';
 
 	let size = 200;
 	let text = 'otpauth://totp/?secret=';
 </script>
 
-<svelte:head>
-	<title>2FA QR Code Generator</title>
-	<meta name="author" content="VHS" />
-	<meta name="description" content="Offline 2FA QR code generator." />
-	<meta name="robots" content="noindex,follow" />
-	<base target="_blank" />
-	<link
-		rel="license"
-		href="https://www.gnu.org/licenses/gpl-3.0.html"
-		title="GNU GPL 3.0 or later"
-	/>
-</svelte:head>
-
 <header class="mt-4 flex flex-col items-center">
-	<h1 class="my-4">2FA QR Code Generator</h1>
+	<h1 class="my-4">Offline 2FA QR Code Generator</h1>
 	<p class="-mt-2 text-sm font-semibold">
 		Save your 2FA secrets, then use this to scan them again.
 	</p>
 </header>
 
-<p>
-	This is a 2FA QR code generator made with SvelteKit that helps you make QR codes from 2FA secrets.
-	Based on <a rel="external noopener" href="https://stefansundin.github.io/2fa-qr/">the original</a>
-	by Stefan Sundin.
-</p>
-
-<p class="text-sm">
-	<b>Usage instructions:</b> Build from source (link below), and generate and scan your QR code
-	after you've reviewed the source code of this application. Application uses strict
-	<a rel="external noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP"
-		>Content-Security Policy</a
-	> to ensure conforming browsers cannot communicate outside the localhost when run offline.
-</p>
+<About />
 
 <section class="flex flex-col space-y-12">
 	<Form bind:text bind:size />
@@ -62,5 +38,5 @@
 </section>
 
 <footer class="mt-12 flex flex-col">
-	<About />
+	<Footer />
 </footer>
