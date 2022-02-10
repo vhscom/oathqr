@@ -10,8 +10,8 @@
 }
 
 [type='checkbox']:checked {
-	background-image: url(check.svg);
+	background-image: url(/images/check.svg);
 }
 select {
-	background-image: url(chevron-down.svg);
+	background-image: url(/images/chevron-down.svg);
 }
