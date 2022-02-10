@@ -23,6 +23,7 @@ Summary of differences from the jQuery version:
 - Dark mode applied based on user preference.
 - Uses a native font stack and doesn't rely on Google.
 - Adjusts form validation logic to make it more friendly.
+- Animated authenticator example promoting libre tools.
 - Missing ability to paste custom `otpauth` URIs directly.
 - Missing dynamic Authenticator app preview card.
 
