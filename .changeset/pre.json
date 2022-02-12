@@ -1,0 +1,8 @@
+{
+  "mode": "pre",
+  "tag": "next",
+  "initialVersions": {
+    "oathgen": "1.0.0-next.1"
+  },
+  "changesets": []
+}
