@@ -1,8 +1,11 @@
 {
-	"mode": "pre",
-	"tag": "next",
-	"initialVersions": {
-		"oathgen": "1.0.0-next.1"
-	},
-	"changesets": ["six-birds-talk"]
+  "mode": "pre",
+  "tag": "next",
+  "initialVersions": {
+    "oathgen": "1.0.0-next.1"
+  },
+  "changesets": [
+    "mean-bees-develop",
+    "six-birds-talk"
+  ]
 }
