@@ -8,6 +8,7 @@
 	<meta name="description" content="Turn your secrets into scannable QR codes." />
 	<meta name="robots" content="noindex,follow" />
 	<base target="_blank" />
+	<link rel="manifest" href="manifest.json" />
 </svelte:head>
 
 <div class="prose prose-oath mx-auto p-4 dark:prose-invert">

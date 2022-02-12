@@ -1,0 +1,36 @@
+{
+	"$schema": "https://json.schemastore.org/web-manifest-combined.json",
+	"short_name": "OATHgen",
+	"name": "OATHgen",
+	"start_url": ".",
+	"categories": ["utilities", "security"],
+	"background_color": "#181a1b",
+	"display": "standalone",
+	"orientation": "portrait-primary",
+	"scope": "/",
+	"theme_color": "#799832",
+	"description": "Turn your secrets into scannable QR codes.",
+	"icons": [
+		{
+			"src": "favicon.png",
+			"type": "image/png",
+			"sizes": "394x394"
+		}
+	],
+	"screenshots": [
+		{
+			"src": "screenshot1.webp",
+			"sizes": "1400x900",
+			"type": "image/webp",
+			"platform": "wide",
+			"label": "Prefers Light Color Scheme"
+		},
+		{
+			"src": "screenshot2.webp",
+			"sizes": "1400x900",
+			"type": "image/webp",
+			"platform": "wide",
+			"label": "Prefers Dark Color Scheme"
+		}
+	]
+}
