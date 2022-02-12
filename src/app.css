@@ -4,7 +4,7 @@
 
 @layer utilities {
 	.validated.invalid {
-		@apply border border-red-500 bg-red-50 text-red-900 placeholder-red-700 focus:border-red-500 focus:ring-red-500 dark:border-[#960d0d] dark:bg-[#370404] dark:placeholder-[#960d0d] dark:focus:border-[#eb1e1e] focus:ring-[#eb1e1e];
+		@apply border border-red-500 bg-red-50 text-red-900 placeholder-red-700 focus:border-red-500 focus:ring-red-500 focus:ring-[#eb1e1e] dark:border-[#960d0d] dark:bg-[#370404] dark:placeholder-[#960d0d] dark:focus:border-[#eb1e1e];
 	}
 }
 
@@ -56,7 +56,7 @@ select {
 	}
 }
 progress::-webkit-progress-value {
-	@apply bg-blue-700 dark:bg-blue-600 opacity-100;
+	@apply bg-blue-700 opacity-100 dark:bg-blue-600;
 }
 progress::-webkit-progress-bar {
 	@apply bg-blue-200 dark:bg-blue-900;

@@ -22,7 +22,7 @@ export const formatUri = (
 	return uri;
 };
 
-export function onInterval(callback: Function, milliseconds: number) {
+export function onInterval(callback: () => void, milliseconds: number) {
 	const interval = setInterval(callback, milliseconds);
 
 	onDestroy(() => {

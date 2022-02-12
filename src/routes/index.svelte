@@ -32,7 +32,7 @@
 	<div
 		id="qr-container"
 		bind:this={container}
-		class="block self-center bg-gray-100 p-4 shadow-inner dark:shadow-oath-500 dark:bg-oath-50/90"
+		class="block self-center bg-gray-100 p-4 shadow-inner dark:bg-oath-50/90 dark:shadow-oath-500"
 	>
 		{#key text}
 			<QR {text} />

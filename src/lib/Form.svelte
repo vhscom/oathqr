@@ -77,7 +77,7 @@
 
 		<div class="flex flex-col">
 			<label for="type" class="mb-1 text-sm">Type</label>
-			<select id="type" class="rounded shadow-inner text-sm" on:change={handleTypeChange}>
+			<select id="type" class="rounded text-sm shadow-inner" on:change={handleTypeChange}>
 				{#each typeOptions as { name, value } (value)}
 					<option {value}>{name}</option>
 				{/each}
@@ -87,7 +87,7 @@
 		<div class="flex flex-col">
 			<label for="secret" class="mb-1 text-sm">Secret</label>
 			<input
-				class="validated rounded shadow-inner text-sm"
+				class="validated rounded text-sm shadow-inner"
 				type="text"
 				id="secret"
 				bind:value={$secret.value}
@@ -102,7 +102,7 @@
 		<div class="flex flex-col">
 			<label for="label" class="mb-1 text-sm">Label</label>
 			<input
-				class="validated rounded shadow-inner text-sm"
+				class="validated rounded text-sm shadow-inner"
 				type="text"
 				id="label"
 				bind:value={$label.value}
@@ -123,7 +123,7 @@
 		<div class="flex flex-col">
 			<label for="issuer" class="mb-1 text-sm">Issuer</label>
 			<input
-				class="rounded shadow-inner text-sm"
+				class="rounded text-sm shadow-inner"
 				type="text"
 				id="issuer"
 				bind:value={issuer}
@@ -136,7 +136,7 @@
 			<div class="flex flex-col">
 				<label for="issuer" class="mb-1 text-sm">Counter</label>
 				<input
-					class="rounded shadow-inner text-sm"
+					class="rounded text-sm shadow-inner"
 					type="number"
 					id="counter"
 					bind:value={counter}
@@ -148,7 +148,7 @@
 
 	<label class="text-sm">
 		<input
-			class="mr-1 rounded align-sub shadow-inner text-sm"
+			class="mr-1 rounded align-sub text-sm shadow-inner"
 			type="checkbox"
 			bind:checked={isAdvancedChecked}
 		/>
@@ -166,7 +166,7 @@
 
 			<div class="flex flex-col">
 				<label for="algorithm" class="mb-1 text-sm">Algorithm</label>
-				<select class="rounded shadow-inner text-sm" id="algorithm" bind:value={algorithm}>
+				<select class="rounded text-sm shadow-inner" id="algorithm" bind:value={algorithm}>
 					{#each algorithmOptions as { name, value } (value)}
 						<option {value}>{name}</option>
 					{/each}
@@ -175,7 +175,7 @@
 
 			<div class="flex flex-col">
 				<label for="digits" class="mb-1 text-sm">Digits</label>
-				<select class="rounded shadow-inner text-sm" id="digits" bind:value={digits}>
+				<select class="rounded text-sm shadow-inner" id="digits" bind:value={digits}>
 					{#each digitsOptions as { name, value } (value)}
 						<option {value}>{name}</option>
 					{/each}
@@ -185,7 +185,7 @@
 				<div class="flex flex-col">
 					<label for="period" class="mb-1 text-sm">Period</label>
 					<select
-						class="rounded shadow-inner text-sm"
+						class="rounded text-sm shadow-inner"
 						type="number"
 						id="period"
 						bind:value={period}
@@ -205,7 +205,7 @@
 		<label for="uri" class="sr-only">URI</label>
 		<input
 			readonly
-			class="rounded shadow-inner text-sm"
+			class="rounded text-sm shadow-inner"
 			type="text"
 			id="uri"
 			bind:value={uri}
@@ -214,7 +214,7 @@
 	</div>
 
 	<div class="flex">
-		<label for="uri" class="text-sm w-12">Size</label>
+		<label for="uri" class="w-12 text-sm">Size</label>
 		<input
 			class="w-full self-center"
 			type="range"
