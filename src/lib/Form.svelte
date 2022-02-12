@@ -4,9 +4,10 @@
 		issuers as issuerOptions,
 		types as typeOptions,
 		algorithms as algorithmOptions,
-		digits as digitsOptions
+		digits as digitsOptions,
+		periods as periodOptions
 	} from './options';
-	import { encodeKeyUri } from './utils';
+	import { formatUri } from './utils';
 
 	import { field, style } from 'svelte-forms';
 	import { required } from 'svelte-forms/validators';
@@ -18,27 +19,32 @@
 	export let size: number;
 	export let text: string;
 
+	let slider: HTMLInputElement;
+
+	$: uri = text;
+
 	const secret = field('secret', '', [required()]);
 	const label = field('label', '', [required()]);
+
 	let issuer = null;
 	let counter = null;
 	let algorithm = 'SHA1';
 	let digits = 6;
-	let period = null;
-
-	$: uri = text;
+	let period = 30;
 
 	let isAdvancedChecked = false;
-	const handleAdvancedCheckChange = ({ target }) => {
-		isAdvancedChecked = target.checked;
-	};
 
 	afterUpdate(() => {
+		const min = Number(slider.min);
+		const max = Number(slider.max);
+		const val = Number(slider.value);
+		slider.style.backgroundSize = `${((val - min) * 100) / (max - min)}% 100%`;
+
 		const periodWithDefault = period ?? 30;
 		const counterWithDefault = counter ?? 0;
 		if (isAdvancedChecked) {
 			if (type !== 'hotp') {
-				text = encodeKeyUri(
+				text = formatUri(
 					type,
 					$label.value,
 					issuer,
@@ -49,7 +55,7 @@
 					periodWithDefault
 				);
 			} else {
-				text = encodeKeyUri(
+				text = formatUri(
 					type,
 					$label.value,
 					issuer,
@@ -60,32 +66,32 @@
 				);
 			}
 		} else {
-			text = encodeKeyUri(type, $label.value, issuer, $secret.value, counterWithDefault);
+			text = formatUri(type, $label.value, issuer, $secret.value, counterWithDefault);
 		}
 	});
 </script>
 
 <form class="flex flex-col space-y-4" autocomplete="off" spellcheck="false">
-	<fieldset class="flex flex-col space-y-4">
+	<fieldset class="flex flex-col space-y-2">
 		<legend class="sr-only">Choose basic settings</legend>
 
-		<select
-			id="type"
-			class="rounded text-sm dark:bg-gray-900 dark:placeholder:text-white"
-			on:change={handleTypeChange}
-		>
-			{#each typeOptions as { name, value } (value)}
-				<option {value}>{name}</option>
-			{/each}
-		</select>
+		<div class="flex flex-col">
+			<label for="type" class="mb-1 text-sm">Type</label>
+			<select id="type" class="rounded shadow-inner text-sm" on:change={handleTypeChange}>
+				{#each typeOptions as { name, value } (value)}
+					<option {value}>{name}</option>
+				{/each}
+			</select>
+		</div>
 
 		<div class="flex flex-col">
+			<label for="secret" class="mb-1 text-sm">Secret</label>
 			<input
-				class="validated rounded text-sm dark:bg-gray-900 dark:placeholder:text-white"
+				class="validated rounded shadow-inner text-sm"
 				type="text"
 				id="secret"
 				bind:value={$secret.value}
-				placeholder="Secret &mdash; Required"
+				placeholder="JBSWY3DPEHPK3PXP"
 				use:style={{ field: secret }}
 			/>
 			{#if !$secret.valid}
@@ -94,12 +100,13 @@
 		</div>
 
 		<div class="flex flex-col">
+			<label for="label" class="mb-1 text-sm">Label</label>
 			<input
-				class="validated rounded text-sm dark:bg-gray-900 dark:placeholder:text-white"
+				class="validated rounded shadow-inner text-sm"
 				type="text"
 				id="label"
 				bind:value={$label.value}
-				placeholder="Label &mdash; Required"
+				placeholder="vhsdev@tutanota.com"
 				use:style={{ field: label }}
 			/>
 			{#if !$label.valid}
@@ -113,31 +120,37 @@
 			{/each}
 		</datalist>
 
-		<input
-			class="rounded text-sm dark:bg-gray-900 dark:placeholder:text-white"
-			type="text"
-			id="issuer"
-			bind:value={issuer}
-			placeholder="Issuer &mdash; Optional"
-			list="issuers"
-		/>
+		<div class="flex flex-col">
+			<label for="issuer" class="mb-1 text-sm">Issuer</label>
+			<input
+				class="rounded shadow-inner text-sm"
+				type="text"
+				id="issuer"
+				bind:value={issuer}
+				placeholder="hub.docker.com"
+				list="issuers"
+			/>
+		</div>
 
 		{#if type === 'hotp'}
-			<input
-				class="rounded text-sm dark:bg-gray-900 dark:placeholder:text-white"
-				type="number"
-				id="counter"
-				bind:value={counter}
-				placeholder="Initial counter &mdash; Defaults to 0"
-			/>
+			<div class="flex flex-col">
+				<label for="issuer" class="mb-1 text-sm">Counter</label>
+				<input
+					class="rounded shadow-inner text-sm"
+					type="number"
+					id="counter"
+					bind:value={counter}
+					placeholder="0"
+				/>
+			</div>
 		{/if}
 	</fieldset>
 
 	<label class="text-sm">
 		<input
-			class="mr-1 rounded text-sm align-sub"
+			class="mr-1 rounded align-sub shadow-inner text-sm"
 			type="checkbox"
-			on:change={handleAdvancedCheckChange}
+			bind:checked={isAdvancedChecked}
 		/>
 		Advanced options
 	</label>
@@ -150,54 +163,68 @@
 		</p>
 		<fieldset class="flex flex-col space-y-2">
 			<legend class="sr-only">Choose advanced settings</legend>
-			<select
-				class="rounded text-sm dark:bg-gray-900 dark:placeholder:text-white"
-				id="algorithm"
-				bind:value={algorithm}
-			>
-				{#each algorithmOptions as { name, value } (value)}
-					<option {value}>{name}</option>
-				{/each}
-			</select>
-			<select
-				class="rounded text-sm dark:bg-gray-900 dark:placeholder:text-white"
-				id="digits"
-				bind:value={digits}
-			>
-				{#each digitsOptions as { name, value } (value)}
-					<option {value}>{name}</option>
-				{/each}
-			</select>
+
+			<div class="flex flex-col">
+				<label for="algorithm" class="mb-1 text-sm">Algorithm</label>
+				<select class="rounded shadow-inner text-sm" id="algorithm" bind:value={algorithm}>
+					{#each algorithmOptions as { name, value } (value)}
+						<option {value}>{name}</option>
+					{/each}
+				</select>
+			</div>
+
+			<div class="flex flex-col">
+				<label for="digits" class="mb-1 text-sm">Digits</label>
+				<select class="rounded shadow-inner text-sm" id="digits" bind:value={digits}>
+					{#each digitsOptions as { name, value } (value)}
+						<option {value}>{name}</option>
+					{/each}
+				</select>
+			</div>
 			{#if type !== 'hotp'}
-				<input
-					class="rounded text-sm dark:bg-gray-900 dark:placeholder:text-white"
-					type="number"
-					id="period"
-					bind:value={period}
-					placeholder="Valid period, in seconds &mdash; Defaults to 30"
-				/>
+				<div class="flex flex-col">
+					<label for="period" class="mb-1 text-sm">Period</label>
+					<select
+						class="rounded shadow-inner text-sm"
+						type="number"
+						id="period"
+						bind:value={period}
+						placeholder="30"
+					>
+						{#each periodOptions as { name, value } (value)}
+							<option {value}>{name}</option>
+						{/each}
+					</select>
+				</div>
 			{/if}
 		</fieldset>
 		<hr />
 	{/if}
 
-	<input
-		readonly
-		class="rounded text-sm dark:bg-gray-900 dark:placeholder:text-white"
-		type="text"
-		id="uri"
-		bind:value={uri}
-		placeholder="otpauth://"
-	/>
+	<div class="flex flex-col">
+		<label for="uri" class="sr-only">URI</label>
+		<input
+			readonly
+			class="rounded shadow-inner text-sm"
+			type="text"
+			id="uri"
+			bind:value={uri}
+			placeholder="otpauth://"
+		/>
+	</div>
 
-	<input
-		class="w-full self-center out-of-range:border-red-500 dark:bg-gray-900 dark:placeholder:text-white"
-		type="range"
-		id="size"
-		bind:value={size}
-		min="84"
-		max="609"
-		step="21"
-		title="QR Code Size"
-	/>
+	<div class="flex">
+		<label for="uri" class="text-sm w-12">Size</label>
+		<input
+			class="w-full self-center"
+			type="range"
+			id="size"
+			bind:value={size}
+			bind:this={slider}
+			min="180"
+			max="360"
+			step="15"
+		/>
+		<output class="w-8 rounded text-sm">{size}</output>
+	</div>
 </form>

@@ -1,11 +1,10 @@
-/* Write your global styles here, in PostCSS syntax */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer utilities {
 	.validated.invalid {
-		@apply border border-red-500 bg-red-50 text-red-900 placeholder-red-700 focus:border-red-500 focus:ring-red-500 dark:border-red-400 dark:bg-red-900 dark:text-red-200 dark:placeholder:text-red-200;
+		@apply border border-red-500 bg-red-50 text-red-900 placeholder-red-700 focus:border-red-500 focus:ring-red-500 dark:border-[#960d0d] dark:bg-[#370404] dark:placeholder-[#960d0d] dark:focus:border-[#eb1e1e] focus:ring-[#eb1e1e];
 	}
 }
 
@@ -15,9 +14,149 @@
 select {
 	background-image: url(/images/chevron-down.svg);
 }
+
+@media (prefers-color-scheme: dark) {
+	[type='checkbox']:focus,
+	[type='checkbox']:focus-visible,
+	[type='checkbox']:active {
+		--tw-ring-offset-color: #181a1b;
+	}
+	[type='checkbox'],
+	[type='radio'] {
+		@apply bg-oath-900;
+	}
+	[type='text'],
+	[type='email'],
+	[type='url'],
+	[type='password'],
+	[type='number'],
+	[type='date'],
+	[type='datetime-local'],
+	[type='month'],
+	[type='search'],
+	[type='tel'],
+	[type='time'],
+	[type='week'],
+	[multiple],
+	textarea,
+	select {
+		@apply bg-oath-900;
+		@apply border-oath-500;
+	}
+	input::placeholder,
+	textarea::placeholder {
+		opacity: 1;
+		@apply text-oath-200/50;
+	}
+	progress::-webkit-progress-value {
+		@apply bg-[#173ead] opacity-100;
+	}
+	progress::-webkit-progress-bar {
+		@apply bg-[#2a2e30];
+	}
+}
 progress::-webkit-progress-value {
 	@apply bg-blue-700 dark:bg-blue-600 opacity-100;
 }
 progress::-webkit-progress-bar {
 	@apply bg-blue-200 dark:bg-blue-900;
+}
+
+#qr-container {
+	width: 210px;
+	height: 210px;
+}
+
+input[type='range'] {
+	-webkit-appearance: none;
+	margin-right: 15px;
+	height: 7px;
+	background: rgba(0, 0, 0, 0.2);
+	border-radius: 5px;
+	background-image: linear-gradient(#799832, #799832);
+	background-size: 20% 100%;
+	background-repeat: no-repeat;
+}
+@media (prefers-color-scheme: dark) {
+	input[type='range'] {
+		background: rgba(255, 255, 255, 0.6);
+		background-image: linear-gradient(#799832, #799832);
+		background-size: 20% 100%;
+		background-repeat: no-repeat;
+	}
+}
+
+/* Input Thumb */
+input[type='range']::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	height: 20px;
+	width: 20px;
+	border-radius: 50%;
+	background: #99bf40;
+	cursor: ew-resize;
+	box-shadow: 0 0 2px 0 #370404;
+	transition: background 0.3s ease-in-out;
+}
+
+input[type='range']::-moz-range-thumb {
+	-webkit-appearance: none;
+	height: 20px;
+	width: 20px;
+	border-radius: 50%;
+	background: #99bf40;
+	cursor: ew-resize;
+	box-shadow: 0 0 2px 0 #370404;
+	transition: background 0.3s ease-in-out;
+}
+
+input[type='range']::-ms-thumb {
+	-webkit-appearance: none;
+	height: 20px;
+	width: 20px;
+	border-radius: 50%;
+	background: #c2d98c;
+	cursor: ew-resize;
+	box-shadow: 0 0 2px 0 #370404;
+	transition: background 0.3s ease-in-out;
+}
+
+input[type='range']::-webkit-slider-thumb:hover {
+	background: #c2d98c;
+}
+
+input[type='range']::-moz-range-thumb:hover {
+	background: #c2d98c;
+}
+
+input[type='range']::-ms-thumb:hover {
+	background: #c2d98c;
+}
+
+/* Input Track */
+input[type='range']::-webkit-slider-runnable-track {
+	-webkit-appearance: none;
+	box-shadow: none;
+	border: none;
+	background: transparent;
+}
+
+input[type='range']::-moz-range-track {
+	-webkit-appearance: none;
+	box-shadow: none;
+	border: none;
+	background: transparent;
+}
+
+input[type='range']::-ms-track {
+	-webkit-appearance: none;
+	box-shadow: none;
+	border: none;
+	background: transparent;
+}
+
+input[type='range']::-webkit-slider-runnable-track {
+	-webkit-appearance: none;
+	box-shadow: none;
+	border: none;
+	background: transparent;
 }

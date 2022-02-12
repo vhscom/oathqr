@@ -1,31 +1,12 @@
-# Offline 2FA QR Code Generator
+# OATHgen
 
-> Save your 2FA secrets, then use this to scan them again.
+> Turn your secrets into scannable QR codes.
 
-This is an offline 2FA QR code generator made with SvelteKit that helps you make QR codes from 2FA secrets. Inspired by [the jQuery version](https://stefansundin.github.io/2fa-qr/) by Stefan Sundin.
+OATHgen helps you create security credentials for use with 2FA/MFA authenticator and other OATH-enabled apps. Use it to generate scannable QR codes for OTP apps such as [Aegis](https://getaegis.app/) and [YubiKey](https://docs.yubico.com/yesdk/index.html). Or skip the QR code and paste the formatted `otpauth` URI directly into your [Pass](https://www.passwordstore.org/) client.
 
 ## Demo
 
-View the [app running online](https://2fa-qr-svelte.vercel.app).
-
-## Motivation
-
-Stefan's QR code generator contains several external requests meaning it cannot run offline. In addition, the jQuery version relies on web fonts provided by Google which makes the application less accessible to users in Mainland China and pings Google every time you load the page. I have addressed those concerns in this version, which runs offline and does not make any external requests.
-
-## Differences
-
-Summary of differences from the jQuery version:
-
-- Adds strict same-origin CSP via HTTP request headers.
-- Makes no external requests for dependencies.
-- Generates sharper QR codes composed of pure vectors.
-- QR code containing secret cannot be saved to device.
-- Dark mode applied based on user preference.
-- Uses a native font stack and doesn't rely on Google.
-- Adjusts form validation logic to make it more friendly.
-- Animated authenticator example promoting libre tools.
-- Missing ability to paste custom `otpauth` URIs directly.
-- Missing dynamic Authenticator app preview card.
+View the [app running online](https://oathgen.vercel.app) to see how it works.
 
 ## Developing
 
@@ -52,6 +33,11 @@ You can preview the production build with `pnpm preview`.
 
 ## Rights
 
-Copyright (C) 2022 VHS
+Copyright (C) 2022 VHS \<vhsdev@tutanota.com\> (https://vhs.codeberg.page)
 
-This work is released under the terms of the GPL-3.0-or-later license. See the file COPYING in the source code for full license text.
+OATHgen is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published
+by the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+To purchase a commercial license please [contact the author](https://vhs.codeberg.page/contact).

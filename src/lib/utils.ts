@@ -1,8 +1,6 @@
-/**
- * Consult https://github.com/google/google-authenticator/wiki/Key-Uri-Format
- * for information on the format used.
- */
-export const encodeKeyUri = (
+import { onDestroy } from 'svelte';
+
+export const formatUri = (
 	type: string,
 	label: string,
 	issuer: string,
@@ -12,7 +10,9 @@ export const encodeKeyUri = (
 	digits?: number,
 	period?: number
 ) => {
-	let uri = `otpauth://${type}/${encodeURIComponent(label)}?secret=${secret.replace(/\s/g, '')}`;
+	let uri = `otpauth://${type}/${encodeURIComponent(label)}?secret=${encodeURIComponent(
+		secret.replace(/\s/g, '')
+	)}`;
 	if (issuer) uri = `${uri}&issuer=${encodeURIComponent(issuer)}`;
 	if (type === 'hotp') uri = `${uri}&counter=${counter}`;
 	if (algorithm) uri = `${uri}&algorithm=${algorithm}`;
@@ -21,3 +21,11 @@ export const encodeKeyUri = (
 
 	return uri;
 };
+
+export function onInterval(callback: Function, milliseconds: number) {
+	const interval = setInterval(callback, milliseconds);
+
+	onDestroy(() => {
+		clearInterval(interval);
+	});
+}
