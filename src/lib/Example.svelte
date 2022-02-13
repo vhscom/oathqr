@@ -30,7 +30,7 @@
 <div class="border-y-8 border-gray-200 dark:border-black/20 dark:bg-gray-900/20">
 	<div class="flex items-center px-6 pt-4">
 		<div
-			class="flex h-16 w-16 items-center justify-center rounded-full bg-gray-600/60 text-3xl font-light text-white dark:text-gray-300"
+			class="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full bg-gray-600/60 text-3xl font-light text-white dark:text-gray-300"
 		>
 			{issuerText.slice(0, 1).toUpperCase()}
 		</div>
