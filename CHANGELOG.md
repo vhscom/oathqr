@@ -1,5 +1,11 @@
 # oathgen
 
+## 1.0.0-next.5
+
+### Patch Changes
+
+- 1a92be5: Prevent example icon from compressing on mobile
+
 ## 1.0.0-next.4
 
 ### Minor Changes
