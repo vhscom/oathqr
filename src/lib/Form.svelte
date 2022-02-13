@@ -17,6 +17,7 @@
 	const handleTypeChange = ({ target }) => (type = target.value);
 
 	let slider: HTMLInputElement;
+	let authstring: HTMLInputElement;
 
 	export let size: number;
 	export let text: string;
@@ -207,16 +208,37 @@
 		<hr />
 	{/if}
 
-	<div class="flex flex-col">
-		<label for="uri" class="sr-only">URI</label>
-		<input
-			readonly
-			class="rounded text-sm shadow-inner"
-			type="text"
-			id="uri"
-			bind:value={uri}
-			placeholder="otpauth://"
-		/>
+	<div class="relative flex">
+		<div class="flex flex-1 flex-col">
+			<label for="uri" class="sr-only">URI</label>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				class="absolute top-2.5 left-1 h-5 w-8 border-r border-r-oath-500 pr-1 dark:text-oath-50/20"
+				viewBox="0 0 20 20"
+				fill="currentColor"
+			>
+				<path
+					fill-rule="evenodd"
+					d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z"
+					clip-rule="evenodd"
+				/>
+			</svg>
+			<input
+				readonly
+				class="rounded pl-11 text-sm shadow-inner"
+				type="text"
+				id="uri"
+				bind:this={authstring}
+				bind:value={uri}
+				placeholder="otpauth://"
+			/>
+		</div>
+		<button
+			on:click|preventDefault={(e) => authstring.select()}
+			class="absolute right-1.5 top-1/2 -mt-3.5 rounded bg-gray-100 px-4 py-1 text-sm text-gray-500 ring-blue-600 hover:bg-oath-700 focus:outline-none focus:ring-1 dark:bg-oath-900 dark:text-[#799832] dark:hover:bg-oath-950"
+		>
+			Select
+		</button>
 	</div>
 
 	<div class="flex">
