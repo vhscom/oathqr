@@ -16,10 +16,10 @@
 	let type = firstType.value;
 	const handleTypeChange = ({ target }) => (type = target.value);
 
+	let slider: HTMLInputElement;
+
 	export let size: number;
 	export let text: string;
-
-	let slider: HTMLInputElement;
 
 	$: uri = text;
 
@@ -31,6 +31,12 @@
 	let algorithm = 'SHA1';
 	let digits = 6;
 	let period = 30;
+
+	export let labelText = $label.value;
+	export let issuerText = issuer;
+
+	$: labelText = $label.value;
+	$: issuerText = issuer;
 
 	let isAdvancedChecked = false;
 
