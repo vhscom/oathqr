@@ -6,7 +6,7 @@
 	import Footer from '$lib/Footer.svelte';
 	import Heading from '$lib/Heading.svelte';
 
-	let size = 210;
+	let size = 200;
 	let text = 'otpauth://totp/?secret=';
 	let container: HTMLDivElement;
 
@@ -32,7 +32,7 @@
 	<div
 		id="qr-container"
 		bind:this={container}
-		class="block self-center bg-gray-100 p-4 shadow-inner dark:bg-oath-50/90 dark:shadow-oath-500"
+		class="block self-center bg-gray-100 p-4 shadow-inner dark:bg-oath-50/20 dark:shadow-oath-900"
 	>
 		{#key text}
 			<QR {text} />

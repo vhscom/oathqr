@@ -222,8 +222,8 @@
 			bind:value={size}
 			bind:this={slider}
 			min="180"
-			max="360"
-			step="15"
+			max="330"
+			step="10"
 		/>
 		<output class="w-8 rounded text-sm">{size}</output>
 	</div>
