@@ -56,10 +56,10 @@ select {
 	}
 }
 progress::-webkit-progress-value {
-	@apply bg-blue-700 opacity-100 dark:bg-blue-600;
+	@apply bg-blue-700 opacity-100 dark:bg-blue-600/40;
 }
 progress::-webkit-progress-bar {
-	@apply bg-blue-200 dark:bg-blue-900;
+	@apply bg-blue-200 dark:bg-blue-900/60;
 }
 
 #qr-container {
