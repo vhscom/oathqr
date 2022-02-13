@@ -1,5 +1,12 @@
 # oathgen
 
+## 1.0.0-next.6
+
+### Minor Changes
+
+- e6a59e3: Notify user when JavaScript is disabled
+- e658ba3: Add select button to URI field
+
 ## 1.0.0-next.5
 
 ### Patch Changes
