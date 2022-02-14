@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-	<title>OATHgen</title>
+	<title>OATHqr</title>
 	<meta name="author" content="VHS" />
 	<meta name="description" content="Turn your secrets into scannable QR codes." />
 	<meta name="robots" content="noindex,follow" />

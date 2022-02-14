@@ -1,16 +1,16 @@
 {
-  "mode": "pre",
-  "tag": "next",
-  "initialVersions": {
-    "oathgen": "1.0.0-next.1"
-  },
-  "changesets": [
-    "blue-otters-drop",
-    "dull-insects-shout",
-    "green-cooks-battle",
-    "mean-bees-develop",
-    "six-birds-talk",
-    "tender-buses-hug",
-    "thin-poets-boil"
-  ]
+	"mode": "pre",
+	"tag": "next",
+	"initialVersions": {
+		"oathqr": "1.0.0-next.1"
+	},
+	"changesets": [
+		"blue-otters-drop",
+		"dull-insects-shout",
+		"green-cooks-battle",
+		"mean-bees-develop",
+		"six-birds-talk",
+		"tender-buses-hug",
+		"thin-poets-boil"
+	]
 }

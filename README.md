@@ -1,12 +1,16 @@
-# OATHgen
+# OATHqr
 
 > Turn your secrets into scannable QR codes.
 
-OATHgen helps you create security credentials for use with 2FA/MFA authenticator and other OATH-enabled apps. Use it to generate scannable QR codes for OTP apps such as [Aegis](https://getaegis.app/) and [YubiKey](https://docs.yubico.com/yesdk/index.html). Or skip the QR code and paste the formatted `otpauth` URI directly into your [Pass](https://www.passwordstore.org/) client.
+OATHqr helps you create security credentials for use with 2FA/MFA authenticator and other OATH-enabled apps. Use it to generate scannable QR codes for OTP apps such as [Aegis](https://getaegis.app/) and [YubiKey](https://docs.yubico.com/yesdk/index.html). Or skip the QR code and paste the formatted `otpauth` URI directly into your [Pass](https://www.passwordstore.org/) client.
+
+## The OATH Group
+
+https://openauthentication.org
 
 ## Demo
 
-View the [app running online](https://oathgen.vercel.app) to see how it works.
+View the [app running online](https://oathqr.vercel.app) to see how it works.
 
 ## Developing
 
@@ -33,11 +37,7 @@ You can preview the production build with `pnpm preview`.
 
 ## Rights
 
+OATHqr - Turn your secrets into scannable QR Codes.<br>
 Copyright (C) 2022 VHS \<vhsdev@tutanota.com\> (https://vhs.codeberg.page)
 
-OATHgen is free software: you can redistribute it and/or modify
-it under the terms of the GNU Affero General Public License as published
-by the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-To purchase a commercial license please [contact the author](https://vhs.codeberg.page/contact).
+OATHqr is made available under the AGPL-3.0-or-later license. See the file COPYING in the source for the complete license text. To purchase a commercial license for the purpose of whitelabeling this application within your organization please [contact the author](https://vhs.codeberg.page/contact).

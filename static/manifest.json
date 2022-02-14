@@ -1,7 +1,7 @@
 {
 	"$schema": "https://json.schemastore.org/web-manifest-combined.json",
-	"short_name": "OATHgen",
-	"name": "OATHgen",
+	"short_name": "OATHqr",
+	"name": "OATHqr",
 	"start_url": ".",
 	"categories": ["utilities", "security"],
 	"background_color": "#181a1b",

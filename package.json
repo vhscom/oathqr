@@ -1,5 +1,5 @@
 {
-	"name": "oathgen",
+	"name": "oathqr",
 	"version": "1.0.0-next.6",
 	"description": "Turn your secrets into scannable QR codes.",
 	"author": "VHS <vhsdev@tutanota.com> (https://vhs.codeberg.page)",
@@ -12,10 +12,10 @@
 		"otpauth",
 		"qr"
 	],
-	"homepage": "https://vhs.codeberg.page/code/oathgen",
+	"homepage": "https://vhs.codeberg.page/code/oathqr",
 	"repository": {
 		"type": "git",
-		"url": "https://codeberg.org/vhs/oathgen.git"
+		"url": "https://codeberg.org/vhs/oathqr.git"
 	},
 	"scripts": {
 		"dev": "svelte-kit dev",

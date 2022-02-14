@@ -10,6 +10,6 @@
 		> docs.
 	</li>
 	<li>
-		Get <a rel="external noopener" href="https://codeberg.org/vhs/oathgen"> the source code</a>.
+		Get <a rel="external noopener" href="https://codeberg.org/vhs/oathqr"> the source code</a>.
 	</li>
 </ul>

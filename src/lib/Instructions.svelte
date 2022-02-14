@@ -1,7 +1,7 @@
 <div>
 	<p class="text-sm">
 		<b>Usage instructions:</b> Build from source (link below), and generate and scan your QR code
-		once you've reviewed the code for potential vulnerabilities. OATHgen uses a strict
+		once you've reviewed the code for potential vulnerabilities. OATHqr uses a strict
 		<a
 			rel="external noopener"
 			tabindex="-1"
