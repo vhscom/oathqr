@@ -1,6 +1,6 @@
 <p class="text-sm">
 	<b>Usage instructions:</b> Build from source (link below), and generate and scan your QR code once
-	you've reviewed the code for potential vulnerabilities. OATHqr uses a strict
+	you've reviewed the README and application source. OATHqr uses a strict
 	<a
 		rel="external noopener"
 		tabindex="-1"

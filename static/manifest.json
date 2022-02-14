@@ -20,14 +20,14 @@
 	"screenshots": [
 		{
 			"src": "screenshot1.webp",
-			"sizes": "1400x900",
+			"sizes": "2048x1536",
 			"type": "image/webp",
 			"platform": "wide",
 			"label": "Prefers Light Color Scheme"
 		},
 		{
 			"src": "screenshot2.webp",
-			"sizes": "1400x900",
+			"sizes": "2048x1536",
 			"type": "image/webp",
 			"platform": "wide",
 			"label": "Prefers Dark Color Scheme"
