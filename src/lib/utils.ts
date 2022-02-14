@@ -29,3 +29,7 @@ export function onInterval(callback: () => void, milliseconds: number) {
 		clearInterval(interval);
 	});
 }
+
+export const hasTrustedOrigin = (origin: string) => {
+	return /https?:\/\/localhost:\d*\/?$/.test(origin);
+};
