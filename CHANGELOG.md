@@ -1,5 +1,11 @@
 # OATHqr
 
+## 1.0.0-next.9
+
+### Patch Changes
+
+- 15c182c: Update documentation
+
 ## 1.0.0-next.8
 
 ### Minor Changes
