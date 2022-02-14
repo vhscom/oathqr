@@ -12,13 +12,17 @@
 
 	import { field, style } from 'svelte-forms';
 	import { required } from 'svelte-forms/validators';
+	import AnnotationSolidIcon from './icons/AnnotationSolidIcon.svelte';
+	import LockSolidIcon from './icons/LockSolidIcon.svelte';
+	import LinkSolidIcon from './icons/LinkSolidIcon.svelte';
 
 	const [firstType] = typeOptions;
 	let type = firstType.value;
 	const handleTypeChange = ({ target }) => (type = target.value);
 
-	let slider: HTMLInputElement;
-	let authstring: HTMLInputElement;
+	let sliderInput: HTMLInputElement;
+	let uriInput: HTMLInputElement;
+	let secretInput: HTMLInputElement;
 
 	export let size: number;
 	export let text: string;
@@ -47,10 +51,10 @@
 	let isAdvancedChecked = false;
 
 	afterUpdate(() => {
-		const min = Number(slider.min);
-		const max = Number(slider.max);
-		const val = Number(slider.value);
-		slider.style.backgroundSize = `${((val - min) * 100) / (max - min)}% 100%`;
+		const min = Number(sliderInput.min);
+		const max = Number(sliderInput.max);
+		const val = Number(sliderInput.value);
+		sliderInput.style.backgroundSize = `${((val - min) * 100) / (max - min)}% 100%`;
 
 		const periodWithDefault = period ?? 30;
 		const counterWithDefault = counter ?? 0;
@@ -83,14 +87,35 @@
 
 		<div class="flex flex-col">
 			<label for="secret" class="mb-1 text-sm">Secret</label>
-			<input
-				class="validated rounded text-sm shadow-inner"
-				type="text"
-				id="secret"
-				bind:value={$secret.value}
-				placeholder="JBSWY3DPEHPK3PXP"
-				use:style={{ field: secret }}
-			/>
+			<div class="relative flex flex-col">
+				<LockSolidIcon
+					classes="absolute top-2 left-1 h-5 w-8 border-r pr-1 text-gray-300 dark:border-r-oath-500 dark:text-oath-50/20"
+				/>
+				<input
+					class="validated rounded pl-11 text-sm shadow-inner"
+					type="password"
+					id="secret"
+					bind:this={secretInput}
+					bind:value={$secret.value}
+					on:input={() => (uriInput.type = 'password')}
+					placeholder="JBSWY3DPEHPK3PXP"
+					use:style={{ field: secret }}
+				/>
+				<button
+					on:click|preventDefault={({ currentTarget }) => {
+						if (secretInput.type === 'password') {
+							currentTarget.textContent = 'Hide';
+							secretInput.type = 'text';
+						} else {
+							currentTarget.textContent = 'Show';
+							secretInput.type = 'password';
+						}
+					}}
+					class="absolute right-1.5 top-1/2 -mt-3.5 rounded bg-gray-100 px-4 py-1 text-sm text-gray-500 ring-blue-600 hover:bg-gray-200 focus:outline-none focus:ring-1 dark:bg-oath-900 dark:text-[#799832] dark:hover:bg-oath-950"
+				>
+					Show
+				</button>
+			</div>
 			{#if !$secret.valid}
 				<div class="mt-1 text-sm">A secret is required.</div>
 			{/if}
@@ -98,14 +123,19 @@
 
 		<div class="flex flex-col">
 			<label for="label" class="mb-1 text-sm">Label</label>
-			<input
-				class="validated rounded text-sm shadow-inner"
-				type="text"
-				id="label"
-				bind:value={$label.value}
-				placeholder="vhsdev@tutanota.com"
-				use:style={{ field: label }}
-			/>
+			<div class="relative flex flex-col">
+				<AnnotationSolidIcon
+					classes="absolute top-2 left-1 h-5 w-8 border-r pr-1 text-gray-300 dark:border-r-oath-500 dark:text-oath-50/20"
+				/>
+				<input
+					class="validated rounded pl-11 text-sm shadow-inner"
+					type="text"
+					id="label"
+					bind:value={$label.value}
+					placeholder="vhsdev@tutanota.com"
+					use:style={{ field: label }}
+				/>
+			</div>
 			{#if !$label.valid}
 				<div class="mt-1 text-sm">A label is required.</div>
 			{/if}
@@ -198,37 +228,40 @@
 		<hr />
 	{/if}
 
-	<div class="relative flex">
-		<div class="flex flex-1 flex-col">
-			<label for="uri" class="sr-only">URI</label>
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				class="absolute top-2.5 left-1 h-5 w-8 border-r pr-1 text-gray-300 dark:border-r-oath-500 dark:text-oath-50/20"
-				viewBox="0 0 20 20"
-				fill="currentColor"
-			>
-				<path
-					fill-rule="evenodd"
-					d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z"
-					clip-rule="evenodd"
-				/>
-			</svg>
+	<div class="flex flex-col">
+		<label for="uri" class="sr-only">URI</label>
+		<div class="relative flex flex-col">
+			<LinkSolidIcon
+				classes="absolute top-2 left-1 h-5 w-8 border-r pr-1 text-gray-300 dark:border-r-oath-500 dark:text-oath-50/20"
+			/>
 			<input
 				readonly
 				class="rounded pl-11 text-sm shadow-inner"
 				type="text"
 				id="uri"
-				bind:this={authstring}
+				bind:this={uriInput}
 				bind:value={uri}
 				placeholder="otpauth://"
 			/>
+			<button
+				on:click|preventDefault={({ currentTarget }) => {
+					if (uriInput.type === 'password') {
+						uriInput.type = 'text';
+						currentTarget.textContent = 'Select';
+					} else if (currentTarget.textContent === 'Select') {
+						uriInput.select();
+						currentTarget.textContent = 'Hide';
+					} else {
+						uriInput.type = 'password';
+						uriInput.blur();
+						currentTarget.textContent = 'Show';
+					}
+				}}
+				class="absolute right-1.5 top-1/2 -mt-3.5 rounded bg-gray-100 px-4 py-1 text-sm text-gray-500 ring-blue-600 hover:bg-gray-200 focus:outline-none focus:ring-1 dark:bg-oath-900 dark:text-[#799832] dark:hover:bg-oath-950"
+			>
+				{uriInput?.type === 'password' ? 'Show' : 'Select'}
+			</button>
 		</div>
-		<button
-			on:click|preventDefault={() => authstring.select()}
-			class="absolute right-1.5 top-1/2 -mt-3.5 rounded bg-gray-100 px-4 py-1 text-sm text-gray-500 ring-blue-600 hover:bg-gray-200 focus:outline-none focus:ring-1 dark:bg-oath-900 dark:text-[#799832] dark:hover:bg-oath-950"
-		>
-			Select
-		</button>
 	</div>
 
 	<div class="flex">
@@ -238,7 +271,7 @@
 			type="range"
 			id="size"
 			bind:value={size}
-			bind:this={slider}
+			bind:this={sliderInput}
 			min="180"
 			max="330"
 			step="10"
