@@ -1,5 +1,11 @@
 # OATHqr
 
+## 1.0.0-next.11
+
+### Minor Changes
+
+- 571e0e6: Obfuscate credentials by default
+
 ## 1.0.0-next.10
 
 ### Minor Changes
