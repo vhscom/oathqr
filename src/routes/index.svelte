@@ -5,7 +5,7 @@
 	import Example from '$lib/Example.svelte';
 	import Footer from '$lib/Footer.svelte';
 	import Heading from '$lib/Heading.svelte';
-
+	import Shield from '$lib/Shield.svelte';
 	let size = 200;
 	let text = 'otpauth://totp/?secret=';
 
@@ -33,11 +33,14 @@
 	<div
 		id="qr-container"
 		bind:this={container}
-		class="block self-center bg-gray-100 p-4 shadow-inner dark:bg-oath-50/20 dark:shadow-oath-900"
+		class="relative self-center bg-gray-100 p-4 shadow-inner dark:bg-oath-50/20 dark:shadow-oath-900"
 	>
-		{#key text}
-			<QR {text} />
-		{/key}
+		<Shield />
+		<div class="absolute top-0 left-0 w-full">
+			{#key text}
+				<QR {text} />
+			{/key}
+		</div>
 	</div>
 </section>
 
