@@ -74,14 +74,14 @@ input[type='range'] {
 	background: rgba(0, 0, 0, 0.2);
 	border-radius: 5px;
 	background-image: linear-gradient(#799832, #799832);
-	background-size: 20% 100%;
+	background-size: 15% 100%;
 	background-repeat: no-repeat;
 }
 @media (prefers-color-scheme: dark) {
 	input[type='range'] {
 		background: rgba(255, 255, 255, 0.1);
 		background-image: linear-gradient(#799832, #799832);
-		background-size: 20% 100%;
+		background-size: 15% 100%;
 		background-repeat: no-repeat;
 	}
 }
