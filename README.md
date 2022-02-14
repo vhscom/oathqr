@@ -7,9 +7,10 @@ OATHqr helps you create security credentials for use with 2FA/MFA and other [OAT
 ## Highlights
 
 - Makes no external requests and runs offline-first.
-- Informs users when they are using a trusted origin.
 - Installable to mobile device home screens.
 - Defaults browser to strict Content-Security Policy.
+- Informs users when they are using a trusted origin.
+- Discourages user from saving QR code to a file.
 - Proactively disables [FLoC surveillance](https://www.eff.org/deeplinks/2021/03/googles-floc-terrible-idea) in Chrome.
 - Provides accessible form for more inclusive design.
 - Promotes ethical software alternatives to Google.
