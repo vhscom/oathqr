@@ -54,31 +54,16 @@
 
 		const periodWithDefault = period ?? 30;
 		const counterWithDefault = counter ?? 0;
+
+		const args = [type, $label.value, issuer, $secret.value, counterWithDefault];
 		if (isAdvancedChecked) {
 			if (type !== 'hotp') {
-				text = formatUri(
-					type,
-					$label.value,
-					issuer,
-					$secret.value,
-					counterWithDefault,
-					algorithm,
-					digits,
-					periodWithDefault
-				);
+				text = formatUri.apply(null, [...args, algorithm, digits, periodWithDefault]);
 			} else {
-				text = formatUri(
-					type,
-					$label.value,
-					issuer,
-					$secret.value,
-					counterWithDefault,
-					algorithm,
-					digits
-				);
+				text = formatUri.apply(null, [...args, algorithm, digits]);
 			}
 		} else {
-			text = formatUri(type, $label.value, issuer, $secret.value, counterWithDefault);
+			text = formatUri.apply(null, [...args]);
 		}
 	});
 </script>
