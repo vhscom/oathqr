@@ -1,5 +1,15 @@
 # OATHqr
 
+## 1.0.0-next.10
+
+### Minor Changes
+
+- 53be8c8: Inform users when they're using a trusted origin
+
+### Patch Changes
+
+- 18f8587: Fix string parsing error in example card
+
 ## 1.0.0-next.9
 
 ### Patch Changes
