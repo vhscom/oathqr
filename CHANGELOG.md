@@ -1,5 +1,15 @@
 # OATHqr
 
+## 1.0.0-next.8
+
+### Minor Changes
+
+- ef77296: Update application name to OATHqr
+
+### Patch Changes
+
+- d7856b5: Clean select button styles in light mode
+
 ## 1.0.0-next.7
 
 ### Minor Changes
