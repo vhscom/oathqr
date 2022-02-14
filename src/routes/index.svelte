@@ -36,11 +36,9 @@
 		class="relative self-center bg-gray-100 p-4 shadow-inner dark:bg-oath-50/20 dark:shadow-oath-900"
 	>
 		<Shield />
-		<div class="absolute top-0 left-0 w-full">
-			{#key text}
-				<QR {text} />
-			{/key}
-		</div>
+		{#key text}
+			<QR {text} />
+		{/key}
 	</div>
 </section>
 

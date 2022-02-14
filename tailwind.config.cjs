@@ -6,6 +6,9 @@ const config = {
 
 	theme: {
 		extend: {
+			backdropBlur: {
+				shield: '8px'
+			},
 			colors: {
 				oath: {
 					50: '#d8d5cf',
