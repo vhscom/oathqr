@@ -8,8 +8,6 @@
 
 	let size = 200;
 	let text = 'otpauth://totp/?secret=';
-	let labelText = 'vhsdev@tutanota.com';
-	let issuerText = 'hub.docker.com';
 
 	let container: HTMLDivElement;
 
@@ -28,7 +26,7 @@
 </section>
 
 <section class="flex flex-col space-y-12">
-	<Form bind:text bind:size bind:issuerText bind:labelText />
+	<Form bind:text bind:size />
 </section>
 
 <section class="my-10 flex flex-col space-y-12">
@@ -44,7 +42,7 @@
 </section>
 
 <section class="flex flex-col">
-	<Example {issuerText} {labelText} />
+	<Example />
 </section>
 
 <footer class="mt-12 mb-8 flex flex-col">

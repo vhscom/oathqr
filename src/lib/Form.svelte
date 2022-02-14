@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { afterUpdate } from 'svelte';
+	import { exampleIssuer, exampleLabel } from './store';
 	import {
 		issuers as issuerOptions,
 		types as typeOptions,
@@ -33,11 +34,15 @@
 	let digits = 6;
 	let period = 30;
 
-	export let labelText = $label.value;
-	export let issuerText = issuer;
+	const example = {
+		issuer: $exampleIssuer,
+		label: $exampleLabel
+	};
 
-	$: labelText = $label.value;
-	$: issuerText = issuer;
+	$: {
+		$exampleIssuer = issuer ? issuer : example.issuer;
+		$exampleLabel = $label.value ? $label.value : example.label;
+	}
 
 	let isAdvancedChecked = false;
 
@@ -122,8 +127,8 @@
 		</div>
 
 		<datalist id="issuers">
-			{#each issuerOptions as issuer (issuer)}
-				<option value={issuer} />
+			{#each issuerOptions as issuerOption (issuerOption)}
+				<option value={issuerOption} />
 			{/each}
 		</datalist>
 
@@ -234,7 +239,7 @@
 			/>
 		</div>
 		<button
-			on:click|preventDefault={(e) => authstring.select()}
+			on:click|preventDefault={() => authstring.select()}
 			class="absolute right-1.5 top-1/2 -mt-3.5 rounded bg-gray-100 px-4 py-1 text-sm text-gray-500 ring-blue-600 hover:bg-gray-200 focus:outline-none focus:ring-1 dark:bg-oath-900 dark:text-[#799832] dark:hover:bg-oath-950"
 		>
 			Select
