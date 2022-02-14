@@ -213,7 +213,7 @@
 			<label for="uri" class="sr-only">URI</label>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
-				class="absolute top-2.5 left-1 h-5 w-8 border-r border-r-oath-500 pr-1 dark:text-oath-50/20"
+				class="absolute top-2.5 left-1 h-5 w-8 border-r pr-1 text-gray-300 dark:border-r-oath-500 dark:text-oath-50/20"
 				viewBox="0 0 20 20"
 				fill="currentColor"
 			>
@@ -235,7 +235,7 @@
 		</div>
 		<button
 			on:click|preventDefault={(e) => authstring.select()}
-			class="absolute right-1.5 top-1/2 -mt-3.5 rounded bg-gray-100 px-4 py-1 text-sm text-gray-500 ring-blue-600 hover:bg-oath-700 focus:outline-none focus:ring-1 dark:bg-oath-900 dark:text-[#799832] dark:hover:bg-oath-950"
+			class="absolute right-1.5 top-1/2 -mt-3.5 rounded bg-gray-100 px-4 py-1 text-sm text-gray-500 ring-blue-600 hover:bg-gray-200 focus:outline-none focus:ring-1 dark:bg-oath-900 dark:text-[#799832] dark:hover:bg-oath-950"
 		>
 			Select
 		</button>

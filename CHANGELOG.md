@@ -1,5 +1,11 @@
 # OATHqr
 
+## 1.0.0-next.7
+
+### Minor Changes
+
+- ef77296: Update application name to OATHqr
+
 ## 1.0.0-next.6
 
 ### Minor Changes

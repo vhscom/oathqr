@@ -1,6 +1,6 @@
 {
 	"name": "oathqr",
-	"version": "1.0.0-next.6",
+	"version": "1.0.0-next.7",
 	"description": "Turn your secrets into scannable QR codes.",
 	"author": "VHS <vhsdev@tutanota.com> (https://vhs.codeberg.page)",
 	"license": "AGPL-3.0-or-later",
