@@ -1,5 +1,12 @@
 # OATHqr
 
+## 1.0.0-next.12
+
+### Patch Changes
+
+- 106d858: Update URI button with secret input
+- c33bb37: Expose part of the QR code behind shield
+
 ## 1.0.0-next.11
 
 ### Minor Changes
