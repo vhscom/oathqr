@@ -16,7 +16,8 @@ const config = {
 		csp: {
 			mode: 'auto',
 			directives: {
-				'default-src': ['self']
+				'default-src': ['self'],
+				'base-uri': ['self']
 			}
 		}
 	}
