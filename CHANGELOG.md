@@ -1,5 +1,15 @@
 # OATHqr
 
+## 1.0.0-next.13
+
+### Minor Changes
+
+- 8bb152d: Harden CSP for base element
+
+### Patch Changes
+
+- 9230ea3: Improve form accessibility
+
 ## 1.0.0-next.12
 
 ### Patch Changes
