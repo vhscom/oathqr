@@ -22,7 +22,28 @@
 
 	let sliderInput: HTMLInputElement;
 	let uriInput: HTMLInputElement;
+	let uriInputButton: HTMLButtonElement;
 	let secretInput: HTMLInputElement;
+
+	const handleSecretButtonClick = ({ currentTarget }) => {
+		if (secretInput.type === 'password') {
+			currentTarget.textContent = 'Hide';
+			secretInput.type = 'text';
+		} else {
+			currentTarget.textContent = 'Show';
+			secretInput.type = 'password';
+		}
+	};
+
+	const handleSecretInput = ({ currentTarget }) => {
+		if (currentTarget.value) {
+			uriInput.type = 'password';
+			uriInputButton.textContent = 'Show';
+		} else {
+			uriInput.type = 'text';
+			uriInputButton.textContent = 'Select';
+		}
+	};
 
 	export let size: number;
 	export let text: string;
@@ -97,20 +118,12 @@
 					id="secret"
 					bind:this={secretInput}
 					bind:value={$secret.value}
-					on:input={() => (uriInput.type = 'password')}
+					on:input={handleSecretInput}
 					placeholder="JBSWY3DPEHPK3PXP"
 					use:style={{ field: secret }}
 				/>
 				<button
-					on:click|preventDefault={({ currentTarget }) => {
-						if (secretInput.type === 'password') {
-							currentTarget.textContent = 'Hide';
-							secretInput.type = 'text';
-						} else {
-							currentTarget.textContent = 'Show';
-							secretInput.type = 'password';
-						}
-					}}
+					on:click|preventDefault={handleSecretButtonClick}
 					class="absolute right-1.5 top-1/2 -mt-3.5 rounded bg-gray-100 px-4 py-1 text-sm text-gray-500 ring-blue-600 hover:bg-gray-200 focus:outline-none focus:ring-1 dark:bg-oath-900 dark:text-[#799832] dark:hover:bg-oath-950"
 				>
 					Show
@@ -244,6 +257,7 @@
 				placeholder="otpauth://"
 			/>
 			<button
+				bind:this={uriInputButton}
 				on:click|preventDefault={({ currentTarget }) => {
 					if (uriInput.type === 'password') {
 						uriInput.type = 'text';
