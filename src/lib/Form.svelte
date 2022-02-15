@@ -279,7 +279,7 @@
 	</div>
 
 	<div class="flex">
-		<label for="uri" class="w-12 text-sm">Size</label>
+		<label for="size" class="w-12 text-sm">Size</label>
 		<input
 			class="w-full self-center"
 			type="range"
