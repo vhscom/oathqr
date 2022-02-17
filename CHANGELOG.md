@@ -1,5 +1,12 @@
 # OATHqr
 
+## 1.0.0-next.15
+
+### Minor Changes
+
+- 2afb542: Add support for Firefox
+- 412abe7: Add support for Safari
+
 ## 1.0.0-next.14
 
 ### Minor Changes
