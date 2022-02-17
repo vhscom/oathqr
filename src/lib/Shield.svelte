@@ -17,7 +17,7 @@
 </script>
 
 <button
-	aria-label="Remove Visible Shield"
+	aria-label="Unhide QR Code"
 	on:click|once={({ currentTarget }) => (currentTarget.hidden = true)}
 	class="absolute top-0 left-0 z-10 h-full w-full rounded outline-none ring-blue-500 focus:ring-2 {$isShieldActive
 		? ''
