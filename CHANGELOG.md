@@ -1,5 +1,11 @@
 # OATHqr
 
+## 1.0.0-next.14
+
+### Minor Changes
+
+- 6823132: Hide QR code only with secret present
+
 ## 1.0.0-next.13
 
 ### Minor Changes
