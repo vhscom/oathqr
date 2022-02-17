@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { afterUpdate } from 'svelte';
-	import { exampleIssuer, exampleLabel } from './store';
+	import { exampleIssuer, exampleLabel, isShieldActive } from './store';
 	import {
 		issuers as issuerOptions,
 		types as typeOptions,
@@ -39,9 +39,11 @@
 		if (currentTarget.value) {
 			uriInput.type = 'password';
 			uriInputButton.textContent = 'Show';
+			isShieldActive.set(true);
 		} else {
 			uriInput.type = 'text';
 			uriInputButton.textContent = 'Select';
+			isShieldActive.set(false);
 		}
 	};
 

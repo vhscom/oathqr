@@ -6,6 +6,7 @@
 	import Footer from '$lib/Footer.svelte';
 	import Heading from '$lib/Heading.svelte';
 	import Shield from '$lib/Shield.svelte';
+
 	let size = 200;
 	let text = 'otpauth://totp/?secret=';
 
