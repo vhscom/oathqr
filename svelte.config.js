@@ -17,7 +17,8 @@ const config = {
 			mode: 'auto',
 			directives: {
 				'default-src': ['self'],
-				'base-uri': ['self']
+				'base-uri': ['self'],
+				'connect-src': ['ws://localhost:*']
 			}
 		}
 	}
