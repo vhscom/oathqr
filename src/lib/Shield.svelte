@@ -28,6 +28,6 @@
 	</div>
 	<canvas
 		bind:this={shield}
-		class="absolute top-0 left-0 h-full w-full p-7 filter backdrop-blur-shield"
+		class="absolute top-0 left-0 h-full w-full p-7 filter firefox:bg-oath-950 backdrop-blur-shield"
 	/>
 </button>
