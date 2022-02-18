@@ -1,11 +1,17 @@
 # OATHqr
 
+## 1.0.0-next.17
+
+### Minor Changes
+
+- 41fdbb3: Make app sharable on social media
+
 ## 1.0.0-next.16
 
 ### Minor Changes
 
 - 161f6c6: Add additional issuers to issuer list
-- db1e507: Disallow referrer on outbound links
+- d88ac92: Disallow referrer on outbound links
 
 ## 1.0.0-next.15
 
