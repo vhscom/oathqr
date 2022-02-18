@@ -15,6 +15,7 @@ OATHqr helps you create security credentials for use with 2FA/MFA and other [OAT
 - Provides accessible form for more inclusive design.
 - Promotes ethical software alternatives to Google.
 - Adjusts color scheme based on system preference.
+- Includes native build target for extra isolation.
 
 ## Screenshots
 
@@ -30,7 +31,11 @@ View the [online demo](https://oathqr.vercel.app) to test it out and see how it 
 
 ## Developing
 
+Depending in your target environment.
+### Web
+
 Once you've cloned the project and installed development dependencies with `pnpm install`, start a development server:
+
 
 ```bash
 pnpm dev
@@ -39,7 +44,17 @@ pnpm dev
 pnpm dev -- --open
 ```
 
+### Native
+
+Once you've cloned the project, completed the [Tauri prerequisites](https://tauri.studio/docs/getting-started/prerequisites/) and installed development dependencies with `pnpm install`, start a development server:
+
+```bash
+pnpm tauri dev
+```
+
 ## Building
+
+### Web
 
 To create a production version of your app:
 
@@ -49,7 +64,13 @@ pnpm build
 
 You can preview the production build with `pnpm preview`.
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs#adapters) for your target environment.
+### Native
+
+To create a native version of your app:
+
+```bash
+pnpm tauri build
+```
 
 ## Rights
 

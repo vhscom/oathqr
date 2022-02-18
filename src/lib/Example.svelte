@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onInterval } from './utils';
-	import { exampleLabel, exampleIssuer } from './store';
+	import { exampleLabel, exampleIssuer, isNative } from '$lib/store';
 
 	let progress: HTMLProgressElement;
 
@@ -19,12 +19,16 @@
 	}, 1000 / 20 /* 20 frames-per-second */);
 </script>
 
-<p>
-	Scan above QR code with <a target="_blank" rel="external noopener" href="https://getaegis.app/"
-		>Aegis Authenticator</a
-	>
-	to see something like:
-</p>
+{#if $isNative}
+	<p>Scan above QR code with your authenticator app to see something like:</p>
+{:else}
+	<p>
+		Scan above QR code with <a target="_blank" rel="external noopener" href="https://getaegis.app/"
+			>Aegis Authenticator</a
+		>
+		to see something like:
+	</p>
+{/if}
 <div class="border-y-8 border-gray-200 dark:border-black/20 dark:bg-gray-900/20">
 	<div class="flex items-center px-6 pt-4">
 		<div

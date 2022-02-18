@@ -1,9 +1,15 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { hasTrustedOrigin } from './utils';
+	import { isNative } from '$lib/store';
 </script>
 
-{#if hasTrustedOrigin($page.url.origin)}
+{#if $isNative}
+	<p class="text-sm">
+		<b>Usage instructions: </b>Fill out the form below to generate your <code>otpauth</code> URI string
+		and corresponding scannable QR code.
+	</p>
+{:else if hasTrustedOrigin($page.url.origin)}
 	<p class="text-sm">
 		<b>Usage instructions: </b>App running on trusted origin {$page.url.origin}. Fill out the form
 		below to generate your <code>otpauth</code> URI string and corresponding scannable QR code.

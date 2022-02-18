@@ -6,6 +6,7 @@
 	import Footer from '$lib/Footer.svelte';
 	import Heading from '$lib/Heading.svelte';
 	import Shield from '$lib/Shield.svelte';
+	import { isNative } from '$lib/store';
 
 	let size = 200;
 	let text = 'otpauth://totp/?secret=';
@@ -18,9 +19,11 @@
 	}
 </script>
 
-<header class="mt-4 flex flex-col items-center">
-	<Heading />
-</header>
+{#if !$isNative}
+	<header class="mt-4 flex flex-col items-center">
+		<Heading />
+	</header>
+{/if}
 
 <section class="flex flex-col space-y-12">
 	<Instructions />

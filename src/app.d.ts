@@ -2,6 +2,10 @@
 
 declare module 'svelte-qr';
 
+interface ImportMetaEnv {
+	OATH_BUILD_TARGET: string;
+}
+
 // See https://kit.svelte.dev/docs#typescript
 // for information about these interfaces
 declare namespace App {

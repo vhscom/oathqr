@@ -3,9 +3,11 @@ lockfileVersion: 5.3
 specifiers:
   '@changesets/cli': ^2.20.0
   '@sveltejs/adapter-auto': next
+  '@sveltejs/adapter-static': ^1.0.0-next.28
   '@sveltejs/kit': next
   '@tailwindcss/forms': ^0.4.0
   '@tailwindcss/typography': ^0.5.2
+  '@tauri-apps/cli': ^1.0.0-rc.4
   '@typescript-eslint/eslint-plugin': ^5.12.0
   '@typescript-eslint/parser': ^5.12.0
   autoprefixer: ^10.4.2
@@ -29,9 +31,11 @@ specifiers:
 devDependencies:
   '@changesets/cli': 2.20.0
   '@sveltejs/adapter-auto': 1.0.0-next.17
-  '@sveltejs/kit': 1.0.0-next.276_svelte@3.46.4
+  '@sveltejs/adapter-static': 1.0.0-next.28
+  '@sveltejs/kit': 1.0.0-next.278_svelte@3.46.4
   '@tailwindcss/forms': 0.4.0_tailwindcss@3.0.23
   '@tailwindcss/typography': 0.5.2_tailwindcss@3.0.23
+  '@tauri-apps/cli': 1.0.0-rc.4
   '@typescript-eslint/eslint-plugin': 5.12.0_39008ab451aed7e12174fadc21405fee
   '@typescript-eslint/parser': 5.12.0_eslint@7.32.0+typescript@4.5.5
   autoprefixer: 10.4.2_postcss@8.4.6
@@ -365,14 +369,20 @@ packages:
       tiny-glob: 0.2.9
     dev: true
 
+  /@sveltejs/adapter-static/1.0.0-next.28:
+    resolution: {integrity: sha512-c4xLyeSwnbGQxe4f1SLpHTbxZDm3TEr43scR3tOlVgQN+mnAL9aDdl3nTtdzWmrUDmDEmY4GriAwLyFLZuINLw==}
+    dependencies:
+      tiny-glob: 0.2.9
+    dev: true
+
   /@sveltejs/adapter-vercel/1.0.0-next.39:
     resolution: {integrity: sha512-YOPGKIILm26h22GN4/iliXce61aTG3Dq5hX8xpDx0cNuCocv0OoLfIqiGpdyJ9NIMpjwXmpVoL4+nV+yh2wcSA==}
     dependencies:
       esbuild: 0.13.15
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.276_svelte@3.46.4:
-    resolution: {integrity: sha512-LuTnN1Nod+Eub7izlyWYRmoSrJD236fBOxNmOMsiaPDQhcHSbnOpaE9WJPWzQeDPm+E3b4u+mNUOfclXabQSlg==}
+  /@sveltejs/kit/1.0.0-next.278_svelte@3.46.4:
+    resolution: {integrity: sha512-WT93Wnu05X9WG9BMMk/dj0gy6R7iXm9aXRDVgmIl9z8jT2ukejgmkhi5IwBYrK0OMIUALRVfukn+iy+srPc91Q==}
     engines: {node: '>=14.13'}
     hasBin: true
     peerDependencies:
@@ -430,6 +440,93 @@ packages:
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       tailwindcss: 3.0.23_autoprefixer@10.4.2
+    dev: true
+
+  /@tauri-apps/cli-darwin-arm64/1.0.0-rc.4:
+    resolution: {integrity: sha512-TWAQbfABk1qsIAWiEmphKk1D+Qa4fBQE9vk5we5abRsqDCQJKu4c7sVwMYPzsa3fnTQk5mgEiSplevSvbbR3DA==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@tauri-apps/cli-darwin-x64/1.0.0-rc.4:
+    resolution: {integrity: sha512-7LAMgtZcUxfsCPJynmS9a3mzsT8AFMu5LGIUgPLppiGsaqb5CZUw5WpJQLW16VBPIQ9qR4zxlsCQb7P2WsbXzA==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@tauri-apps/cli-linux-arm-gnueabihf/1.0.0-rc.4:
+    resolution: {integrity: sha512-Ut3aOMI1dMoPNsvNfJgweqqM5G4G2HBWSdSy5C0hD1GC3Y1xSv1BWORNT/eYNeJF5sCTO+qkslsOVw30xoJ6Fg==}
+    engines: {node: '>= 10'}
+    cpu: [arm]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@tauri-apps/cli-linux-arm64-gnu/1.0.0-rc.4:
+    resolution: {integrity: sha512-8JEsLGKfu2ffYSMWzMcRHZpzQrMKPmY1HiXi1W8xDOKbwTSaZ4qlP67JAE6UtdvrDJDg/rGGTEs33ZZ0VuCJ9Q==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@tauri-apps/cli-linux-arm64-musl/1.0.0-rc.4:
+    resolution: {integrity: sha512-UGWY19vCsNpDPQfsfCpeeVVF4mwkbEVUCUdz/PoAtcW07nxa0xI/fNgX6U/LKXepon5z6iUsS5P4AtcLjPw5rw==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@tauri-apps/cli-linux-x64-gnu/1.0.0-rc.4:
+    resolution: {integrity: sha512-lYs6xMw4Y8FpmRThzsWiXQ7SbR2lyBilC+m9VDQAp1vd1eriF80XtFbfhxKy9Wpm5qzYtcWYoIKWiRDa8LX8DA==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@tauri-apps/cli-linux-x64-musl/1.0.0-rc.4:
+    resolution: {integrity: sha512-DL4KT4dj2k+y1C3NTY5Fr85/WeYYlpcZZsLzF451wevFunNfGw5kic3tSaaJPtkjgK21t1Bw/hd3XtP6QtFuiA==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@tauri-apps/cli-win32-x64-msvc/1.0.0-rc.4:
+    resolution: {integrity: sha512-GFhupERiJX48k5hiepNfOm2FCcRTmNQ8m+XfW4slJ61v71wth06kFnFXrbLxTBd8wy77AD7yEGTahjGvR+9CAQ==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [win32]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@tauri-apps/cli/1.0.0-rc.4:
+    resolution: {integrity: sha512-VL7/28yzLiMevw4JGsDcEQYCsasNgALUcPKDma6rBv7sPypf4V3fksDCc90xs6usNQeoSfKaiExQWy24shoPDg==}
+    engines: {node: '>= 10'}
+    hasBin: true
+    optionalDependencies:
+      '@tauri-apps/cli-darwin-arm64': 1.0.0-rc.4
+      '@tauri-apps/cli-darwin-x64': 1.0.0-rc.4
+      '@tauri-apps/cli-linux-arm-gnueabihf': 1.0.0-rc.4
+      '@tauri-apps/cli-linux-arm64-gnu': 1.0.0-rc.4
+      '@tauri-apps/cli-linux-arm64-musl': 1.0.0-rc.4
+      '@tauri-apps/cli-linux-x64-gnu': 1.0.0-rc.4
+      '@tauri-apps/cli-linux-x64-musl': 1.0.0-rc.4
+      '@tauri-apps/cli-win32-x64-msvc': 1.0.0-rc.4
     dev: true
 
   /@types/is-ci/3.0.0:
