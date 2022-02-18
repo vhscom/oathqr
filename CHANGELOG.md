@@ -1,5 +1,11 @@
 # OATHqr
 
+## 1.0.0-next.18
+
+### Minor Changes
+
+- 37b4837: Support native builds to macOS, Windows and Linux
+
 ## 1.0.0-next.17
 
 ### Minor Changes
