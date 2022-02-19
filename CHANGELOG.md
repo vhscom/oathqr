@@ -1,5 +1,11 @@
 # OATHqr
 
+## 1.0.0-next.19
+
+### Minor Changes
+
+- 4c288a5: Add native iconography
+
 ## 1.0.0-next.18
 
 ### Minor Changes
