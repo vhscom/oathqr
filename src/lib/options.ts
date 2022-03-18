@@ -23,6 +23,7 @@ export const periods = [
 export const issuers = [
 	'Amazon',
 	'Apple',
+	'Atlassian',
 	'AWS',
 	'Bitwarden',
 	'Blizzard',
