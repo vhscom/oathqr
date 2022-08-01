@@ -1,5 +1,11 @@
 # OATHqr
 
+## 1.0.0-next.20
+
+### Patch Changes
+
+- 1813a38: Full refresh of all dependencies
+
 ## 1.0.0-next.19
 
 ### Minor Changes

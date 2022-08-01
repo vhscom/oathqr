@@ -24,9 +24,6 @@ const config = {
 				'base-uri': ['self'],
 				'connect-src': ['ws://localhost:*']
 			}
-		},
-		vite: {
-			envPrefix: 'OATH'
 		}
 	}
 };
