@@ -21,6 +21,7 @@ export const periods = [
 ];
 
 export const issuers = [
+	'1Password',
 	'Amazon',
 	'Apple',
 	'Atlassian',
