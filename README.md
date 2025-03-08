@@ -2,7 +2,12 @@
 
 > Turn your secrets into scannable QR codes.
 
-OATHqr helps users create security credentials for use with 2FA/MFA and other [OATH-enabled](https://openauthentication.org) apps. Use it to generate scannable QR codes for one-time password authenticator apps such as [Aegis](https://getaegis.app/) or [YubiKey](https://docs.yubico.com/yesdk/index.html). Or skip the QR code altogether and paste the formatted `otpauth` URI it creates directly into [OpenPGP](https://www.openpgp.org/software/)-activated password managers such as the remarkable [Pass](https://www.passwordstore.org/) standard unix password manager.
+OATHqr helps users create security credentials for use with 2FA/MFA and
+other [OATH-enabled](https://openauthentication.org) apps. Use it to generate scannable QR codes for one-time password
+authenticator apps such as [Aegis](https://getaegis.app/) or [YubiKey](https://docs.yubico.com/yesdk/index.html). Or
+skip the QR code altogether and paste the formatted `otpauth` URI it creates directly
+into [OpenPGP](https://www.openpgp.org/software/)-activated password managers such as the
+remarkable [Pass](https://www.passwordstore.org/) standard unix password manager.
 
 ## Use Cases
 
@@ -11,6 +16,7 @@ OATHqr helps users create security credentials for use with 2FA/MFA and other [O
 - Enable users to work directly with auth strings to discourage camera use.
 - Discourage users from saving secrets to cleartext files they cannot read.
 - Consolidate account credentials within encrypted password managers.
+
 ## Highlights
 
 - Makes no external requests and runs offline-first.
@@ -29,20 +35,41 @@ OATHqr helps users create security credentials for use with 2FA/MFA and other [O
 OATHqr adapts its colors based on your current system preference:
 
 |              Prefers Light               |              Prefers Dark               |
-| :--------------------------------------: | :-------------------------------------: |
+|:----------------------------------------:|:---------------------------------------:|
 | ![Light Mode](./static/screenshot1.webp) | ![Dark Mode](./static/screenshot2.webp) |
 
 ## Demo
 
 View the [online demo](https://oathqr.vercel.app) to test it out and see how it works.
 
-## Developing
+## Development
 
 Depending on your target environment.
+
+### Setup Environment
+
+To ensure compatibility with the lockfile, set up the correct Node.js and pnpm versions:
+
+```shell
+# Using fnm (Fast Node Manager)
+fnm install 16.16.0
+fnm use 16.16.0
+
+# Install compatible pnpm version
+npm install -g pnpm@6.35.1
+```
+
+Reference `.npmrc` file as well `package.json` for Node project configuration.
+
 ### Web
 
-Once you've cloned the project and installed development dependencies with `pnpm install`, start a development server:
+Once you've cloned the project install development dependencies:
 
+```shell
+pnpm install --frozen-lockfile
+```
+
+Then start a development server:
 
 ```bash
 pnpm dev
@@ -51,9 +78,13 @@ pnpm dev
 pnpm dev -- --open
 ```
 
+See [Compatability Notes](#compatability-notes) for help running the non-Rust part of this app.
+
 ### Native
 
-Once you've cloned the project, completed the [Tauri prerequisites](https://tauri.studio/docs/getting-started/prerequisites/) and installed development dependencies with `pnpm install`, start a development server:
+Once you've cloned the project, completed
+the [Tauri prerequisites](https://tauri.studio/docs/getting-started/prerequisites/) and installed development
+dependencies with `pnpm install`, start a development server:
 
 ```bash
 pnpm tauri dev
@@ -79,9 +110,21 @@ To create a native version of your app:
 pnpm tauri build
 ```
 
-## Rights
+## License
 
 OATHqr - Turn your secrets into scannable QR Codes.<br>
 Copyright (C) 2022 VHS \<vhsdev@tutanota.com\> (https://vhs.codeberg.page)
 
-OATHqr is made available under the AGPL-3.0-or-later license. See the file COPYING in the source for the complete license text. To purchase a commercial license for the purpose of whitelabeling this application within your organization please [contact the author](https://vhs.codeberg.page/contact).
+OATHqr is made available under the AGPL-3.0-or-later license. See the file COPYING in the source for the complete
+license text.
+
+## Compatability Notes
+
+This project is locked to:
+
+- Node.js v14.13 - v16.x
+- pnpm v6.x (specifically 6.35.1 recommended)
+- SvelteKit "next" version (pre-1.0)
+- Vite 3.0.4
+
+Leverage lockfile to produce a working build based on compatability matrix.
