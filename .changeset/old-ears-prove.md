@@ -1,5 +1,0 @@
----
-'oathqr': patch
----
-
-Update documentation

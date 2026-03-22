@@ -1,12 +1,16 @@
 {
-	"extends": "./.svelte-kit/tsconfig.json",
 	"compilerOptions": {
-		"resolveJsonModule": true,
-		"sourceMap": true,
+		"target": "ES2022",
+		"module": "ESNext",
+		"moduleResolution": "bundler",
+		"strict": true,
+		"noEmit": true,
+		"isolatedModules": true,
 		"esModuleInterop": true,
+		"lib": ["ES2022", "DOM", "DOM.Iterable"],
 		"skipLibCheck": true,
-		"forceConsistentCasingInFileNames": true,
-		"allowJs": true,
-		"checkJs": true,
-	}
+		"experimentalDecorators": true,
+		"useDefineForClassFields": false
+	},
+	"include": ["src"]
 }

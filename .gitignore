@@ -1,9 +1,9 @@
-.idea
-.DS_Store
 node_modules
-/build
-/.svelte-kit
-/package
-.env
-.env.*
+dist
+target
+gen
+.DS_Store
+*.local
+.env*
 !.env.example
+.idea

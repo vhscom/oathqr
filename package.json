@@ -1,67 +1,29 @@
 {
 	"name": "oathqr",
-	"version": "1.0.0-next.20",
-	"description": "Turn your secrets into scannable QR codes.",
-	"author": "VHS <vhsdev@tutanota.com> (https://vhs.codeberg.page)",
-	"license": "AGPL-3.0-or-later",
-	"keywords": [
-		"oath",
-		"otp",
-		"authenticator",
-		"yubikey",
-		"otpauth",
-		"qr"
-	],
-	"homepage": "https://vhs.codeberg.page/code/oathqr",
-	"repository": {
-		"type": "git",
-		"url": "https://codeberg.org/vhs/oathqr.git"
-	},
+	"private": true,
+	"version": "2.0.0",
+	"type": "module",
 	"scripts": {
-		"dev": "vite dev",
+		"dev": "vite",
 		"build": "vite build",
-		"package": "svelte-kit package",
 		"preview": "vite preview",
-		"check": "svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
-		"lint": "prettier --ignore-path .gitignore --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
-		"format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. .",
-		"changeset": "changeset",
-		"tauri": "OATH_BUILD_TARGET=native tauri"
+		"check": "biome check .",
+		"fix": "biome check --write .",
+		"test": "bun test.js",
+		"clean": "rm -rf dist target node_modules/.vite",
+		"tauri:dev": "tauri dev",
+		"tauri:build": "tauri build"
+	},
+	"dependencies": {
+		"lit": "^3.2.0",
+		"qrcode": "^1.5.4"
 	},
 	"devDependencies": {
-		"@changesets/cli": "^2.24.1",
-		"@sveltejs/adapter-auto": "next",
-		"@sveltejs/adapter-static": "^1.0.0-next.38",
-		"@sveltejs/kit": "next",
-		"@tailwindcss/forms": "0.5.2",
-		"@tailwindcss/typography": "^0.5.4",
-		"@tauri-apps/cli": "^1.0.5",
-		"@typescript-eslint/eslint-plugin": "^5.31.0",
-		"@typescript-eslint/parser": "^5.31.0",
-		"autoprefixer": "^10.4.8",
-		"eslint": "8.20",
-		"eslint-config-prettier": "^8.5.0",
-		"eslint-plugin-svelte3": "4",
-		"postcss": "^8.4.14",
-		"postcss-load-config": "4",
-		"prettier": "^2.7.1",
-		"prettier-plugin-svelte": "^2.7.0",
-		"prettier-plugin-tailwindcss": "^0.1.13",
-		"svelte": "^3.49.0",
-		"svelte-check": "^2.8.0",
-		"svelte-forms": "^2.3.1",
-		"svelte-preprocess": "^4.10.7",
-		"svelte-qr": "^1.0.0",
-		"tailwindcss": "^3.1.7",
-		"tslib": "^2.4.0",
-		"typescript": "^4.7.4",
-		"vite": "^3.0.4"
-	},
-	"type": "module",
-	"engines": {
-		"node": ">=14.13 <=16.x",
-		"pnpm": "6.x"
-	},
-	"packageManager": "pnpm@6.35.1"
+		"@biomejs/biome": "^2.3.14",
+		"@tauri-apps/cli": "^2.0.0",
+		"@types/qrcode": "^1.5.5",
+		"playwright": "^1.58.2",
+		"typescript": "^5.6.0",
+		"vite": "^6.0.0"
+	}
 }

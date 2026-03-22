@@ -20,95 +20,73 @@ remarkable [Pass](https://www.passwordstore.org/) standard unix password manager
 ## Highlights
 
 - Makes no external requests and runs offline-first.
-- Installable to mobile device home screens.
-- Defaults browser to strict Content-Security Policy.
-- Informs users when they are using a trusted origin.
-- Discourages user from saving QR code to a file.
-- Proactively disables [FLoC surveillance](https://www.eff.org/deeplinks/2021/03/googles-floc-terrible-idea) in Chrome.
+- No data leaves your browser — zero network calls, zero storage.
+- Privacy shield auto-engages when credentials change.
 - Provides accessible form for more inclusive design.
-- Promotes ethical software alternatives to Google.
 - Adjusts color scheme based on system preference.
-- Includes native build target with isolation enabled.
-
-## Screenshots
-
-OATHqr adapts its colors based on your current system preference:
-
-|              Prefers Light               |              Prefers Dark               |
-|:----------------------------------------:|:---------------------------------------:|
-| ![Light Mode](./static/screenshot1.webp) | ![Dark Mode](./static/screenshot2.webp) |
-
-## Demo
-
-View the [online demo](https://oathqr.vercel.app) to test it out and see how it works.
+- Includes native desktop build target via Tauri.
 
 ## Development
 
-Depending on your target environment.
+### Prerequisites
 
-### Setup Environment
-
-To ensure compatibility with the lockfile, set up the correct Node.js and pnpm versions:
-
-```shell
-# Using fnm (Fast Node Manager)
-fnm install 16.16.0
-fnm use 16.16.0
-
-# Install compatible pnpm version
-npm install -g pnpm@6.35.1
-```
-
-Reference `.npmrc` file as well `package.json` for Node project configuration.
+- [Bun](https://bun.sh/) (or Node.js 24+)
+- [Rust](https://rustup.rs/) (for native builds only)
 
 ### Web
 
-Once you've cloned the project install development dependencies:
+Install dependencies and start a development server:
 
 ```shell
-pnpm install --frozen-lockfile
+bun install
+bun run dev
 ```
-
-Then start a development server:
-
-```bash
-pnpm dev
-
-# or start the server and open the app in a new browser tab
-pnpm dev -- --open
-```
-
-See [Compatability Notes](#compatability-notes) for help running the non-Rust part of this app.
 
 ### Native
 
-Once you've cloned the project, completed
-the [Tauri prerequisites](https://tauri.studio/docs/getting-started/prerequisites/) and installed development
-dependencies with `pnpm install`, start a development server:
+Complete the [Tauri prerequisites](https://v2.tauri.app/start/prerequisites/) and then:
 
 ```bash
-pnpm tauri dev
+bun run tauri:dev
 ```
 
 ## Building
 
 ### Web
 
-To create a production version of your app:
-
 ```bash
-pnpm build
+bun run build
 ```
 
-You can preview the production build with `pnpm preview`.
+Preview the production build with `bun run preview`.
 
 ### Native
 
-To create a native version of your app:
+```bash
+bun run tauri:build
+```
+
+## Testing
 
 ```bash
-pnpm tauri build
+bun run test
 ```
+
+Runs Playwright end-to-end tests against the dev server covering all components, form interactions, QR generation, security attributes, and privacy controls.
+
+## Scripts
+
+| Script | Description |
+|---|---|
+| `bun run dev` | Start Vite dev server |
+| `bun run build` | Production build |
+| `bun run preview` | Preview production build |
+| `bun run check` | Lint and format check (Biome) |
+| `bun run fix` | Auto-fix lint and format issues |
+| `bun run test` | Run Playwright e2e tests |
+| `bun run clean` | Remove build artifacts |
+| `bun run tauri:dev` | Start Tauri dev environment |
+| `bun run tauri:build` | Build native desktop app |
 
 ## License
 
@@ -117,14 +95,3 @@ Copyright (C) 2022 VHS \<vhsdev@tutanota.com\> (https://vhs.codeberg.page)
 
 OATHqr is made available under the AGPL-3.0-or-later license. See the file COPYING in the source for the complete
 license text.
-
-## Compatability Notes
-
-This project is locked to:
-
-- Node.js v14.13 - v16.x
-- pnpm v6.x (specifically 6.35.1 recommended)
-- SvelteKit "next" version (pre-1.0)
-- Vite 3.0.4
-
-Leverage lockfile to produce a working build based on compatability matrix.
